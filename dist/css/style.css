@@ -1197,7 +1197,14 @@ body::after {
   position: absolute;
   right: 7%;
   top: 66%;
-  z-index: 10000000;
+  z-index: 3;
+}
+
+.fullscreen-block .ytb-btn {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .ytb-btn:hover .ytb-btn__arrow {
@@ -5068,6 +5075,13 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     transition: all 0.3s ease 1.7s;
   }
 
+  .loaded body .fullscreen-block .ytb-btn {
+    opacity: 1;
+    -webkit-transition: all 0.3s ease 1.7s;
+    -o-transition: all 0.3s ease 1.7s;
+    transition: all 0.3s ease 1.7s;
+  }
+
   .fullscreen-block__slider-btns {
     position: absolute;
     top: 0;
@@ -6172,6 +6186,10 @@ body:not(.is-using-mouse) .fancybox__container :focus {
       padding-bottom: calc(0.0000000625rem + 5.6249999375 * (100vw - 37.5rem) / 5);
     }
 }
+
+  .fullscreen-block .ytb-btn {
+    opacity: 1;
+  }
 
   .ytb-btn {
     bottom: 0;

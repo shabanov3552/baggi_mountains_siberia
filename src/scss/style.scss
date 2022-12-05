@@ -50,17 +50,20 @@ $responsiveType: 1;
 @import "base/null";
 
 body {
+
 	// Скролл заблокирован
 	.lock & {
 		overflow: hidden;
 		touch-action: none;
 	}
+
 	// Сайт загружен
 	.loaded & {
 		.preloader {
 			opacity: 0;
 			visibility: hidden;
 		}
+
 		@media (min-width: $mobile) {
 			.fullscreen-block__main-bg-ground {
 				transform: translate(-14%, 0px);
@@ -68,18 +71,21 @@ body {
 				visibility: hidden;
 				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
 			}
+
 			.fullscreen-block__main-bg-mountains {
 				transform: translate(-13.8%, 0px);
 				opacity: 0;
 				visibility: hidden;
 				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
 			}
+
 			.fullscreen-block__main-bg-guggy {
 				transform: translate(0%, 0px);
 				opacity: 0;
 				visibility: hidden;
 				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
 			}
+
 			.header.full-animation {
 				.header__container {
 					transform: translate(0px, 0px);
@@ -87,19 +93,28 @@ body {
 					transition: opacity 0.3s ease-out 1.7s, transform 0.3s ease-out 1.7s;
 				}
 			}
+
 			.fullscreen-block__title {
 				transform: translate(0px, 0px);
 				opacity: 1;
 				transition: all 0.3s ease-out 1.7s;
 			}
+
 			.fullscreen-block__slider {
 				transform: translate(0px, 0px);
 				opacity: 1;
 				transition: all 0.3s ease-out 1.7s;
 			}
+
 			.fullscreen-block {
+
 				.swiper-button-prev,
 				.swiper-button-next {
+					opacity: 1;
+					transition: all 0.3s ease 1.7s;
+				}
+
+				.ytb-btn {
 					opacity: 1;
 					transition: all 0.3s ease 1.7s;
 				}
@@ -107,6 +122,7 @@ body {
 		}
 	}
 }
+
 // Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
 .wrapper {
 	min-height: 100%;
@@ -114,15 +130,18 @@ body {
 	flex-direction: column;
 	overflow: hidden;
 	background-color: #2e4a6b;
+
 	// Прижимаем footer
-	> main {
+	>main {
 		flex: 1 1 auto;
 	}
+
 	// Фикс для слайдеров
-	> * {
+	>* {
 		min-width: 0;
 	}
 }
+
 // Ограничивающий контейнер ======================================================================================================================================================================================================================
 
 /*
@@ -132,6 +151,7 @@ body {
 Снипет (HTML): cnt
 */
 @if ($responsiveType==1) {
+
 	// Отзывчивая
 	[class*="__container"] {
 		@if ($maxWidthContainer>0) {
@@ -140,35 +160,47 @@ body {
 			margin: 0 auto;
 			@include adaptiveValue("padding-left", 160, 80, 1920, 991);
 			@include adaptiveValue("padding-right", 160, 80, 1920, 991);
+
 			@media (max-width: $tablet) {
 				@include adaptiveValue("padding-left", 80, 20, 992, 680, 1);
 				@include adaptiveValue("padding-right", 80, 20, 992, 680, 1);
 			}
 		}
+
 		@if ($containerPadding>0) {
 			padding: 0 rem(math.div($containerPadding, 2));
 		}
 	}
-} @else {
+}
+
+@else {
+
 	// По брейк-поинтам
 	[class*="__container"] {
 		margin: 0 auto;
+
 		@if ($maxWidthContainer>0) {
 			max-width: rem($maxWidthContainer);
 			box-sizing: content-box;
-		} @else {
+		}
+
+		@else {
 			@if ($containerPadding>0) {
 				padding: 0 rem(math.div($containerPadding, 2));
 			}
 		}
+
 		@media (max-width: $pc) {
 			max-width: rem(970);
 		}
+
 		@media (max-width: $tablet) {
 			max-width: rem(750);
 		}
+
 		@media (max-width: $mobile) {
 			max-width: none;
+
 			@if ($containerPadding>0 and $maxWidthContainer>0) {
 				padding: 0 rem(math.div($containerPadding, 2));
 			}

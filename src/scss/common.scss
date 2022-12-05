@@ -399,7 +399,16 @@
 	position: absolute;
 	right: 7%;
 	top: 66%;
-	z-index: 10000000;
+	z-index: 3;
+
+	.fullscreen-block & {
+		opacity: 0;
+		transition: all 0.3s ease 0s;
+
+		@media (max-width:$mobile) {
+			opacity: 1;
+		}
+	}
 
 	@media (max-width:$tablet) {
 		bottom: 70px;
