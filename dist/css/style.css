@@ -1194,13 +1194,13 @@ body::after {
   font-weight: 600;
   font-size: 22px;
   line-height: 36px;
+}
+
+.fullscreen-block .ytb-btn {
   position: absolute;
   right: 7%;
   top: 66%;
   z-index: 3;
-}
-
-.fullscreen-block .ytb-btn {
   opacity: 0;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -5711,7 +5711,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     padding: 0px 0px 30px 0px;
   }
 
-  .ytb-btn {
+  .fullscreen-block .ytb-btn {
     bottom: 70px;
     right: 3%;
     top: auto;
@@ -6191,18 +6191,18 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     opacity: 1;
   }
 
-  .ytb-btn {
+  .fullscreen-block .ytb-btn {
     bottom: 0;
     font-size: 16px;
     padding: 10px 15px;
   }
 
-  .ytb-btn .ytb-btn__arrow {
-    margin-left: 0.625rem;
+  .ytb-btn__ytb-logo {
+    width: 80px;
   }
 
-  .ytb-btn .ytb-btn__ytb-logo {
-    width: 80px;
+  .ytb-btn__arrow {
+    margin-left: 0.625rem;
   }
 
   .header.full-animation .header__container {
@@ -6723,8 +6723,8 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     margin-bottom: 30px;
   }
 
-  .ytb-btn {
-    bottom: -20px;
+  .fullscreen-block .ytb-btn {
+    bottom: -40px;
     right: 10px;
   }
 

@@ -396,44 +396,38 @@
 	font-weight: 600;
 	font-size: 22px;
 	line-height: 36px;
-	position: absolute;
-	right: 7%;
-	top: 66%;
-	z-index: 3;
 
 	.fullscreen-block & {
+		position: absolute;
+		right: 7%;
+		top: 66%;
+		z-index: 3;
 		opacity: 0;
 		transition: all 0.3s ease 0s;
 
 		@media (max-width:$mobile) {
 			opacity: 1;
 		}
-	}
 
-	@media (max-width:$tablet) {
-		bottom: 70px;
-		right: 3%;
-		top: auto;
-	}
-
-	@media (max-width:$mobile) {
-		bottom: 0;
-		font-size: 16px;
-		padding: 10px 15px;
-
-		.ytb-btn__arrow {
-			margin-left: rem(10);
+		@media (max-width:$tablet) {
+			bottom: 70px;
+			right: 3%;
+			top: auto;
 		}
 
-		.ytb-btn__ytb-logo {
-			width: 80px;
+		@media (max-width:$mobile) {
+			bottom: 0;
+			font-size: 16px;
+			padding: 10px 15px;
+
+		}
+
+		@media (max-width:$mobileSmall) {
+			bottom: -40px;
+			right: 10px;
 		}
 	}
 
-	@media (max-width:$mobileSmall) {
-		bottom: -20px;
-		right: 10px;
-	}
 
 	&:hover {
 		.ytb-btn__arrow {
@@ -447,6 +441,10 @@
 
 	&__ytb-logo {
 		margin-left: rem(11);
+
+		@media (max-width:$mobile) {
+			width: 80px;
+		}
 	}
 
 	// .ytb-btn__arrow
@@ -454,6 +452,10 @@
 	&__arrow {
 		transition: transform 0.3s ease 0s;
 		margin-left: rem(32);
+
+		@media (max-width:$mobile) {
+			margin-left: rem(10);
+		}
 	}
 }
 
