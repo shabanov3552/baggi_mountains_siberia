@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Контакты"
+})
+
+<body>
+	@@include('html/_preloader.htm',{})
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+			<div class="page__title">
+				<img src="@img/contacts.svg" alt="">
+			</div>
+			<div class="page-contacts">
+				<div class="page-contacts__container">
+					<div class="page-contacts__wrapper">
+						<div class="page-contacts__map">
+							<div id="map"></div>
+							<div class="page-contacts__map-frame">
+								<img class="page-contacts__map-frame-top" src="@img/map-frame-top.svg" alt="">
+								<img class="page-contacts__map-frame-left" src="@img/map-frame-left.svg" alt="">
+								<img class="page-contacts__map-frame-right" src="@img/map-frame-right.svg" alt="">
+								<img class="page-contacts__map-frame-bottom" src="@img/map-frame-bottom.svg" alt="">
+							</div>
+						</div>
+						<div class="page-contacts__content">
+							<ul class="page-contacts__list">
+								<li class="page-contacts__item">
+									<div class="page-contacts__icon">
+										<svg class="page-contacts__svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_address"></use>
+										</svg>
+									</div>
+									<div class="page-contacts__name">Адрес</div>
+									<div class="page-contacts__value">Красноярск, пр-кт. им. газ. Красноярский рабочий, 27, стр.18</div>
+								</li>
+								<li class="page-contacts__item">
+									<div class="page-contacts__icon">
+										<svg class="page-contacts__svg">
+											<use xlink:href="@img/icons/icons.svg#svg-phone"></use>
+										</svg>
+									</div>
+									<div class="page-contacts__name">Телефон</div>
+									<a href="tel:+79029919690" class="page-contacts__value">+7 902 991 96 90</a>
+								</li>
+								<li class="page-contacts__item">
+									<div class="page-contacts__icon">
+										<svg class="page-contacts__svg">
+											<use xlink:href="@img/icons/icons.svg#svg-mail"></use>
+										</svg>
+									</div>
+									<div class="page-contacts__name">E-mail </div>
+									<a href="mailto:S-prestige@bk.ru" class="page-contacts__value">S-prestige@bk.ru</a>
+								</li>
+								<li class="page-contacts__item">
+									<div class="page-contacts__icon">
+										<svg class="page-contacts__svg">
+											<use xlink:href="@img/icons/icons.svg#svg-instagram"></use>
+										</svg>
+									</div>
+									<div class="page-contacts__name">Instagram</div>
+									<a href="https://www.instagram.com/mountains_siberia/" class="page-contacts__value">mountains_siberia</a>
+								</li>
+								<li class="page-contacts__item">
+									<div class="page-contacts__icon">
+										<svg class="page-contacts__svg">
+											<use xlink:href="@img/icons/icons.svg#svg-telegram"></use>
+										</svg>
+									</div>
+									<div class="page-contacts__name">Telegram</div>
+									<a href="https://t.me/mountains_siberia" class="page-contacts__value">@Siberia_Mountains</a>
+								</li>
+							</ul>
+							<div class="page-contacts__col">
+								<div class="page-contacts__subtitle">Реквизиты</div>
+								<div class="page-contacts__requisites">
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">Название</div>
+										<div class="page-contacts__text">Общество с ограниченной ответственностью ТД «Бригадир»</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">ИНН</div>
+										<div class="page-contacts__text">2465190439</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">Название</div>
+										<div class="page-contacts__text">Общество с ограниченной ответственностью ТД «Бригадир»</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">ИНН</div>
+										<div class="page-contacts__text">2465190439</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">Название</div>
+										<div class="page-contacts__text">Общество с ограниченной ответственностью ТД «Бригадир»</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">ИНН</div>
+										<div class="page-contacts__text">2465190439</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">Название</div>
+										<div class="page-contacts__text">Общество с ограниченной ответственностью ТД «Бригадир»</div>
+									</div>
+									<div class="page-contacts__row">
+										<div class="page-contacts__name">ИНН</div>
+										<div class="page-contacts__text">2465190439</div>
+									</div>
+								</div>
+								<button class="page-contacts__show-more">Показать реквизиты</button>
+								<a href="" class="link__download">
+									<svg class="link__download-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-document"></use>
+									</svg>
+									<span class="link__download-text">
+										<span class="link__download-span">Скачать реквизиты</span>
+										<span class="link__download-extension">PDF, 0.5 МB</span>
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="page-contacts__form">
+						<div class="reserv">
+							<div class="reserv__container">
+								<div class="reserv__row">
+									<div class="reserv__header">
+										<div class="reserv__title"><svg class="reserv__svg">
+												<use xlink:href="@img/icons/icons.svg#svg-consultation_title"></use>
+											</svg>
+										</div>
+										<div class="reserv__subtitle">Мы свяжемся с вами в ближайшее время.
+										</div>
+									</div>
+									<div class="reserv__form">
+										<form action="#" method="get" id="form" class="form">
+											<div class="form__line">
+												<label for="userName" class="form__label">Введите имя *</label>
+												<input id="userName" autocomplete="off" type="text" name="form[]" class="form__input input" data-parsley-required>
+												<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+											</div>
+											<div class="form__line">
+												<label for="userPhone" class="form__label">Введите номер телефона *</label>
+												<input id="userPhone" autocomplete="off" type="phone" name="form[]" class="form__input js_phone" data-parsley-required>
+												<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+											</div>
+											<div class="form__line">
+												<label for="userMail" class="form__label">E-mail *</label>
+												<input id="userMail" autocomplete="off" type="email" name="form[]" class="form__input" data-parsley-required data-parsley-type="email">
+												<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+											</div>
+											<div class="form__line">
+												<label for="userMessage" class="form__label">Комментарий *</label>
+												<textarea id="userMessage" autocomplete="off" name="form[]" data-parsley-required class="form__input"></textarea>
+												<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+											</div>
+											<div class="form__row">
+												<button type="submit" class="form__button button">Отправить</button>
+												<div class="checkbox">
+													<label for="c_1" class="checkbox__label"><span class="checkbox__text">Отправляя данные, я даю свое согласие на </span><a href="#" data-popup="#consent" class="checkbox__link">обработку перс. данных</a></label>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="page-contacts__bg">
+					<img class="page-contacts__bg-main" src="img/consult_bg.svg" alt="">
+					<img class="page-contacts__bg-forest" src="img/technique_bg_forest.png" alt="">
+				</div>
+			</div>
+		</main>
+		<script type="text/javascript">
+			if (document.querySelector('#map')) {
+				mapAdd();
+			}
+
+			function mapAdd() {
+				let tag = document.createElement('script');
+				tag.src = "https://api-maps.yandex.ru/2.1/?apikey=0aa2f6b6-353d-4a10-bb62-97763a975ef4&lang=ru_RU";
+				let firstScriptTag = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			}
+
+
+			setTimeout(function () {
+				ymaps.ready(init);
+
+				function init() {
+					var myMap = new ymaps.Map("map", {
+						center: [56.064160438389926, 92.93830578250119],
+						zoom: 17,
+						controls: ['zoomControl'],
+					});
+					let addresFirst = new ymaps.Placemark([56.064160438389926, 92.93830578250119], {}, {
+						iconLayout: 'default#imageWithContent',
+						iconImageHref: '<?= SITE_TEMPLATE_PATH ?>/img/map.svg',
+						iconImageSize: [43, 54],
+						iconImageOffset: [-20, -20],
+						iconContentOffset: [0, 0],
+					});
+					myMap.geoObjects.add(addresFirst);
+					myMap.behaviors.disable('scrollZoom');
+				}
+			}, 1000);
+		</script>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

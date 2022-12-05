@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Деталка"
+})
+
+<body>
+	@@include('html/_preloader.htm',{})
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page detail-tour">
+			<div class="detail-tour__fulscreen-block">
+				<!-- Картинка фоновоя, менятьется из админки -->
+				<div class="detail-tour__fulscreen-image-ibg"><img data-src="@img/detail_bg_1.jpg" alt=""></div>
+			</div>
+			<div class="info-block">
+				<div class="info-block__wrapper">
+					<div class="info-block__row">
+						<div class="info-block__col">
+							<div class="info-block__title">
+								<!-- Заголовок картинкой, со сменой из админки -->
+								<img src="@img/title_detail_aktru.svg" alt="">
+							</div>
+							<div class="info-block__dates">
+								<div class="info-block__date">05 – 09 мая 2022</div>
+								<div class="info-block__date">11 – 15 мая 2022</div>
+							</div>
+							<div class="info-block__desc">
+								<div class="info-block__text">В нашей стране множество уникальных мест, в которых должен побыть каждый хоть раз в жизни.</div>
+								<div class="info-block__text">Невероятные виды, еличественные горы, чистый воздух и завораживающая, сказочная атмосфера.</div>
+								<div class="info-block__text">Открытие сезона! Едем на Алтай.</div>
+							</div>
+						</div>
+						<div class="info-block__col">
+							<a data-popup="#reserv" href="#" class="info-block__link btn">Забронировать</a>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_1"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Уровень сложности</div>
+								<div class="info-block__row-value">Легкий</div>
+							</div>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_2"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Длительность</div>
+								<div class="info-block__row-value">5 дней</div>
+							</div>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_3"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Пробег</div>
+								<div class="info-block__row-value">400 км</div>
+							</div>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_4"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Транспорт</div>
+								<div class="info-block__row-value">Багги</div>
+							</div>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_5"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Проживание</div>
+								<div class="info-block__row-value">Комфорт</div>
+							</div>
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_6"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Старт</div>
+								<div class="info-block__row-value">Горно-Алтайск</div>
+							</div>
+							<!-- последним должен быть блок с ценой всгда -->
+							<div class="info-block__row-in">
+								<div class="info-block__icon">
+									<svg class="info-block__icon-svg">
+										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_7"></use>
+									</svg>
+								</div>
+								<div class="info-block__row-name">Стоимость</div>
+								<div class="info-block__row-value">90 000 ₽</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="price-calc">
+				<div class="price-calc__container">
+					<form action="" class="price-calc__form">
+						<div class="price-calc__top">
+							<div class="price-calc__title">Расчет стоимости</div>
+							<div class="price-calc__cost">
+								<div class="cost-tour">
+									<div class="cost-tour__row">
+										<div class="cost-tour__select-block">
+											<label class="cost-tour__label">
+												<span class="cost-tour__sel-title">Количество взрослых</span>
+												<select name="form[]">
+													<option value="1" selected>1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
+											</label>
+											<label class="cost-tour__label">
+												<span class="cost-tour__sel-title">Детей (до 14 лет вкл.)</span>
+												<select name="form[]">
+													<option value="1" selected>1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
+											</label>
+										</div>
+										<div class="cost-tour__total">
+											<div class="cost-tour__title">Стоимость участия</div>
+											<div class="cost-tour__total-price">100 000 ₽</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="price-calc__bottom">
+							<div class="cost-rent">
+								<div class="cost-rent__row">
+									<div class="cost-rent__cheks">
+										<div class="cost-rent__cheks-top"></div>
+										<div class="cost-rent__cheks-cars"></div>
+									</div>
+									<div class="cost-rent__total"></div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="slider-video">
+				<div class="slider-video__container">
+					<div class="slider-video__header">
+						<div class="slider-video__title">Видео из поездок</div>
+						<div class="slider-video__nav">
+							<!--  навигация слайдера (влево/вправо) -->
+							<button type="button" class="swiper-button slider-video-button-prev">
+								<svg class="swiper-button__svg">
+									<use xlink:href="@img/icons/icons.svg#svg-arr_white_left"></use>
+								</svg>
+							</button>
+							<button type="button" class="swiper-button slider-video-button-next">
+								<svg class="swiper-button__svg">
+									<use xlink:href="@img/icons/icons.svg#svg-arr_white_right"></use>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="slider-video__content">
+						<!-- Оболочка слайдера -->
+						<div class="slider-video__slider swiper">
+							<!-- Двигающееся часть слайдера -->
+							<div class="slider-video__wrapper swiper-wrapper">
+								<!-- Слайд -->
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="@img/video_poster_1.jpg" class="slider-video__fancybox">
+										<img src="@img/video_poster_1.jpg">
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="@img/video_poster_1.jpg" class="slider-video__fancybox">
+										<img src="@img/video_poster_1.jpg">
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="@img/video_poster_1.jpg" class="slider-video__fancybox">
+										<img src="@img/video_poster_1.jpg">
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="@img/video_poster_1.jpg" class="slider-video__fancybox">
+										<img src="@img/video_poster_1.jpg">
+									</a>
+								</div>
+								<div class="slider-video__slide swiper-slide">
+									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tour-timetable">
+				<div class="tour-timetable__row">
+					<div class="tour-timetable__desc">
+						<div class="tour-timetable__title">
+							<img src="@img/tour-timetable-title__day-1.svg" alt="">
+						</div>
+						<ul class="tour-timetable__list">
+							<li class="tour-timetable__item">Трансфер аэропорт г. Горно-Алтайск</li>
+							<li class="tour-timetable__item">Остановки на Чуйском тракте</li>
+							<li class="tour-timetable__item">Заселение в гостиницу</li>
+							<li class="tour-timetable__item">Брифинг, знакомство с участниками</li>
+						</ul>
+					</div>
+					<div class="tour-timetable__images">
+						<img src="@img/tour-timetable__image_1.jpg" alt="">
+					</div>
+				</div>
+				<div class="tour-timetable__row">
+					<div class="tour-timetable__desc">
+						<div class="tour-timetable__title">
+							<img src="@img/tour-timetable-title__day-2.svg" alt="">
+						</div>
+						<ul class="tour-timetable__list">
+							<li class="tour-timetable__item">Завтрак в гостинице</li>
+							<li class="tour-timetable__item">Выезд по маршруту «Долина Актру»</li>
+							<li class="tour-timetable__item">Озеро Гейзерное</li>
+							<li class="tour-timetable__item">Вид на Северо-Чуйский хребет</li>
+							<li class="tour-timetable__item">Леднии «Малый Актру», «Большой Актру»</li>
+						</ul>
+					</div>
+					<div class="tour-timetable__images">
+						<img src="@img/tour-timetable__image_2.jpg" alt="">
+						<img src="@img/tour-timetable__image_3.jpg" alt="">
+					</div>
+				</div>
+				<div class="tour-timetable__row">
+					<div class="tour-timetable__desc">
+						<div class="tour-timetable__title">
+							<img src="@img/tour-timetable-title__day-3.svg" alt="">
+						</div>
+						<ul class="tour-timetable__list">
+							<li class="tour-timetable__item">Завтрак в гостинице</li>
+							<li class="tour-timetable__item">Выезд по маршруту «Чулышманская долина»</li>
+							<li class="tour-timetable__item">Ущелье «Красные ворота», Пазырыкские курганы, озеро Чейбеккель, Киделю</li>
+							<li class="tour-timetable__item">Перевал «Кату-Ярык», «Улаганский» Водопады «Чул-Оозы», «Карасу», «Куркуре»</li>
+						</ul>
+					</div>
+					<div class="tour-timetable__images">
+						<img src="@img/tour-timetable__image_4.jpg" alt="">
+						<img src="@img/tour-timetable__image_5.jpg" alt="">
+					</div>
+				</div>
+				<div class="tour-timetable__row">
+					<div class="tour-timetable__desc">
+						<div class="tour-timetable__title">
+							<img src="@img/tour-timetable-title__day-4.svg" alt="">
+						</div>
+						<ul class="tour-timetable__list">
+							<li class="tour-timetable__item">Завтрак в гостинице</li>
+							<li class="tour-timetable__item">Утренний легкий трекинг до урочища Аккурум с «Каменными грибами»</li>
+							<li class="tour-timetable__item">Обзорная точка «Акташский ретранслятор» высота 3038 м</li>
+							<li class="tour-timetable__item">Озеро «Горных духов»</li>
+							<li class="tour-timetable__item">Возвращаемся на базу в село Акташ</li>
+							<li class="tour-timetable__item">Посещение SPA-комплекса с бассейном</li>
+						</ul>
+					</div>
+					<div class="tour-timetable__images">
+						<img src="@img/tour-timetable__image_6.jpg" alt="">
+						<img src="@img/tour-timetable__image_7.jpg" alt="">
+					</div>
+				</div>
+				<div class="tour-timetable__row">
+					<div class="tour-timetable__desc">
+						<div class="tour-timetable__title">
+							<img src="@img/tour-timetable-title__day-5.svg" alt="">
+						</div>
+						<ul class="tour-timetable__list">
+							<li class="tour-timetable__item">Заключительный день</li>
+							<li class="tour-timetable__item">Трансфер в аэропорт к рейсам с вылетом не ранее 17:00</li>
+						</ul>
+					</div>
+					<div class="tour-timetable__images">
+						<img src="@img/tour-timetable__image_8.jpg" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="included-tour">
+				<div class="included-tour__container">
+					<div class="included-tour__col">
+						<div class="included-tour__image"><img src="@img/included-tour_1.svg" alt=""></div>
+						<div class="included-tour__title">Включено</div>
+						<ul class="included-tour__list">
+							<li class="included-tour__item">Трансфер аэропорт–гостиница</li>
+							<li class="included-tour__item">Проживание гостиница 3-х разовое питание</li>
+							<li class="included-tour__item">Услуги проводника</li>
+						</ul>
+					</div>
+					<div class="included-tour__col">
+						<div class="included-tour__image"><img src="@img/included-tour_2.svg" alt=""></div>
+						<div class="included-tour__title">Снаряжение</div>
+						<ul class="included-tour__list">
+							<li class="included-tour__item">Аренда багги, экипировки</li>
+							<li class="included-tour__item">Общее кемпинговое оборудование</li>
+							<li class="included-tour__item">ГСМ, техническое сопровождение</li>
+						</ul>
+					</div>
+					<div class="included-tour__col">
+						<div class="included-tour__image"><img src="@img/included-tour_2.svg" alt=""></div>
+						<div class="included-tour__title">Снаряжение</div>
+						<ul class="included-tour__list">
+							<li class="included-tour__item">Аренда багги, экипировки</li>
+							<li class="included-tour__item">Общее кемпинговое оборудование</li>
+							<li class="included-tour__item">ГСМ, техническое сопровождение</li>
+						</ul>
+					</div>
+					<div class="included-tour__col">
+						<div class="included-tour__image"><img src="@img/included-tour_3.svg" alt=""></div>
+						<div class="included-tour__title">Бонус</div>
+						<ul class="included-tour__list">
+							<li class="included-tour__item">Приятным дополнением будет восстановить силы после путешествия</li>
+							<li class="included-tour__item">2 часа оздоровительного комплекса: бассейн, хамам, сауна, баня, будут в нашем распоряжении</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="reserv">
+				<div class="reserv__container">
+					<div class="reserv__row">
+						<div class="reserv__header">
+							<div class="reserv__title"><svg class="reserv__svg">
+									<use xlink:href="@img/icons/icons.svg#svg-reserv_title"></use>
+								</svg>
+							</div>
+							<div class="reserv__subtitle">Оставьте контакты, мы свяжемся с вами
+								в ближайшее время
+							</div>
+						</div>
+						<div class="reserv__form">
+							<form action="#" method="get" id="form" class="form">
+								<div class="form__line">
+									<label for="userName" class="form__label">Введите имя *</label>
+									<input id="userName" autocomplete="off" type="text" name="form[]" class="form__input input" data-parsley-required>
+									<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+								</div>
+								<div class="form__line">
+									<label for="userPhone" class="form__label">Введите номер телефона *</label>
+									<input id="userPhone" autocomplete="off" type="phone" name="form[]" class="form__input js_phone" data-parsley-required>
+									<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+								</div>
+								<div class="form__line">
+									<label for="userMail" class="form__label">E-mail</label>
+									<input id="userMail" autocomplete="off" type="email" name="form[]" class="form__input" data-parsley-type="email">
+									<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+								</div>
+								<div class="form__line">
+									<label for="userMessage" class="form__label">Комментарий</label>
+									<textarea id="userMessage" autocomplete="off" name="form[]" class="form__input"></textarea>
+									<span class="form__input-clear"><img src="@img/input_close.svg" alt=""></span>
+								</div>
+								<div class="form__row">
+									<button type="submit" class="form__button button">Отправить</button>
+									<div class="checkbox">
+										<label for="c_1" class="checkbox__label"><span class="checkbox__text">Отправляя данные, я даю свое согласие на </span><a href="#" data-popup="#consent" class="checkbox__link">обработку перс. данных</a></label>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="technique">
+				<div class="technique__container">
+					<div class="technique__title">
+						<svg class="technique__title-svg">
+							<use xlink:href="@img/icons/icons.svg#svg-technique__title"></use>
+						</svg>
+					</div>
+					<div class="technique__row">
+						<div class="technique__slider-nav">
+							<!--  навигация слайдера (влево/вправо) -->
+							<button type="button" class="swiper-button technique__slider-button-prev">
+								<svg class=" swiper-button__svg">
+									<use xlink:href="@img/icons/icons.svg#svg-arr_white_left"></use>
+								</svg>
+							</button>
+							<button type="button" class="swiper-button technique__slider-button-next">
+								<svg class="swiper-button__svg">
+									<use xlink:href="@img/icons/icons.svg#svg-arr_white_right"></use>
+								</svg>
+							</button>
+						</div>
+						<!-- Оболочка слайдера -->
+						<div class="technique__slider swiper">
+							<!-- Двигающееся часть слайдера -->
+							<div class="technique__wrapper swiper-wrapper">
+								<!-- Слайд -->
+								<div class="technique__slide swiper-slide">
+									<div class="technique__col">
+										<div class="technique__img"><img src="@img/technique_1.png" alt=""></div>
+										<div class="technique__name">
+											Polaris RZR 1000 4XP
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Мощность</div>
+											<div class="technique__text">110 лошадей</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Кол-во мест</div>
+											<div class="technique__text">4</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Наличие</div>
+											<div class="technique__text">1 единица</div>
+										</div>
+									</div>
+								</div>
+								<div class="technique__slide swiper-slide">
+									<div class="technique__col">
+										<div class="technique__img"><img src="@img/technique_2.png" alt=""></div>
+										<div class="technique__name">
+											Polaris RZR 1000 XP
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Мощность</div>
+											<div class="technique__text">110 лошадей</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Кол-во мест</div>
+											<div class="technique__text">2</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Наличие</div>
+											<div class="technique__text">2 единица</div>
+										</div>
+									</div>
+								</div>
+								<div class="technique__slide swiper-slide">
+									<div class="technique__col">
+										<div class="technique__img"><img src="@img/technique_3.png" alt=""></div>
+										<div class="technique__name">
+											Polaris RZR 1000 Turbo
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Мощность</div>
+											<div class="technique__text">168 лошадей</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Кол-во мест</div>
+											<div class="technique__text">2</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Наличие</div>
+											<div class="technique__text">1 единица</div>
+										</div>
+									</div>
+								</div>
+								<div class="technique__slide swiper-slide">
+									<div class="technique__col">
+										<div class="technique__img"><img src="@img/technique_4.png" alt=""></div>
+										<div class="technique__name">
+											Stels Guepard
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Мощность</div>
+											<div class="technique__text">74 лошади</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Кол-во мест</div>
+											<div class="technique__text">2</div>
+										</div>
+										<div class="technique__row-in">
+											<div class="technique__text">Наличие</div>
+											<div class="technique__text">1 единица</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="technique__bg">
+					<img class="technique__bg-main" src="@img/technique_bg.svg" alt="">
+					<img class="technique__bg-forest" src="@img/technique_bg_forest.png" alt="">
+				</div>
+			</div>
+			<div class="forwarders">
+				<div class="forwarders__container">
+					<div class="forwarders__title">
+						<svg class="forwarders__svg">
+							<use xlink:href="@img/icons/icons.svg#svg-ekspeditor_title"></use>
+						</svg>
+					</div>
+					<div class="forwarders__row">
+						<div class="forwarders__col">
+							<div class="forwarders__img"><img src="@img/ekspeditor_1.png" alt=""></div>
+							<div class="forwarders__name">Светлана Сухотина</div>
+							<div class="forwarders__position">Сердце экспедиции</div>
+						</div>
+						<div class="forwarders__col">
+							<div class="forwarders__img"><img src="@img/ekspeditor_2.png" alt=""></div>
+							<div class="forwarders__name">Игорь Сухотин</div>
+							<div class="forwarders__position">Голова экспедиции</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

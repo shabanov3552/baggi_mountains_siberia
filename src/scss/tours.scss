@@ -1,0 +1,147 @@
+.tours-page {
+	padding-top: 100px;
+	.timetable {
+		padding: 50px 0px 100px 0px;
+		@media (min-width: em(1921)) {
+			padding: 5% 0px 5% 0px;
+		}
+		// .timetable__container
+
+		&__container {
+		}
+
+		// .timetable__title
+
+		&__title {
+			@include adaptiveValue("margin-bottom", 50, 30, 1920, 680, 1);
+		}
+
+		// .timetable__title-svg
+
+		&__title-svg {
+			@include adaptiveValue("width", 236, 200, 680, 375, 1);
+			@include adaptiveValue("height", 130, 90, 680, 375, 1);
+		}
+
+		// .timetable__row
+
+		&__row {
+		}
+
+		// .timetable__month
+
+		&__month {
+		}
+
+		// .timetable__month-name
+
+		&__month-name {
+		}
+
+		// .timetable__days
+
+		&__days {
+		}
+
+		// .timetable__day
+
+		&__day {
+			// .timetable__day_current
+
+			&_current {
+			}
+		}
+
+		// .timetable__dates
+
+		&__dates {
+		}
+
+		// .timetable__date
+
+		&__date {
+		}
+	}
+	.tours {
+		// .tours__container
+
+		&__container {
+		}
+
+		// .tours__row
+
+		&__row {
+		}
+
+		// .tours__image
+
+		&__image {
+			position: relative;
+			z-index: 0;
+			img {
+				width: 115%;
+				@media (max-width: $tablet) {
+					width: 100%;
+				}
+			}
+		}
+
+		// .tours__content
+
+		&__content {
+			position: relative;
+			z-index: 1;
+		}
+
+		// .tours__col
+
+		&__col {
+		}
+
+		// .tours__title
+
+		&__title {
+		}
+
+		// .tours__description
+
+		&__description {
+		}
+
+		// .tours__inner
+
+		&__inner {
+		}
+
+		// .tours__row-in
+
+		&__row-in {
+		}
+
+		// .tours__text
+
+		&__text {
+		}
+
+		// .tours__date
+
+		&__date {
+		}
+
+		// .tours__rht
+
+		&__rht {
+			padding-top: 10px;
+		}
+
+		// .tours__price
+
+		&__price {
+		}
+
+		// .tours__btn
+
+		&__btn {
+		}
+	}
+}

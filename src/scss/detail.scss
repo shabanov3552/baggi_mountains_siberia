@@ -1,0 +1,627 @@
+.detail-tour {
+	// .detail-tour__fulscreen-block
+
+	&__fulscreen-block {
+		position: relative;
+		height: 100vh;
+		min-height: 650px;
+		@media (max-width: $tablet) {
+			height: 584px;
+			min-height: none;
+		}
+	}
+
+	// .detail-tour__fulscreen-image-ibg
+
+	&__fulscreen-image-ibg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.info-block {
+	@include adaptiveValue("margin-bottom", 50, 64);
+
+	// .info-block__image-ibg
+
+	&__image-ibg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 613px;
+		// border-top-left-radius: 20px;
+		// border-top-right-radius: 20px;
+		// background: rgba(46, 74, 107, 0.5);
+		@media (max-width: $mobile) {
+			display: none;
+		}
+	}
+
+	// .info-block__wrapper
+
+	&__wrapper {
+		position: relative;
+		@include adaptiveValue("max-width", 1600, 1218, 1920, 1280, 1);
+		box-sizing: content-box;
+		margin: 0 auto;
+		background: rgba(46, 74, 107, 0.95);
+		border-radius: 20px;
+		@media (max-width: em(1280)) {
+			@include adaptiveValue("max-width", 1218, 939, 1280, 1000, 1);
+		}
+	}
+
+	// .info-block__row
+
+	&__row {
+		@include adaptiveValue("padding-left", 160, 75, 1920, 1280, 1);
+		@include adaptiveValue("padding-right", 160, 75, 1920, 1280, 1);
+		@include adaptiveValue("margin-top", -490, -320, 1920, 1000, 1);
+		@include adaptiveValue("gap", 170, 60, 1920, 1280, 1);
+		display: flex;
+		padding: 80px 0px 80px 0px;
+		@media (max-width: em(1280)) {
+			padding: 70px 0px 70px 0px;
+			@include adaptiveValue("padding-left", 75, 50, 1280, 1000, 1);
+			@include adaptiveValue("padding-right", 75, 50, 1280, 1000, 1);
+		}
+		@media (max-width: $tablet) {
+			padding: 55px 0px 55px 0px;
+			@include adaptiveValue("padding-left", 50, 30, 1000, 680, 1);
+			@include adaptiveValue("padding-right", 50, 30, 1000, 680, 1);
+			flex-direction: column;
+			gap: 25px;
+		}
+		@media (max-width: em(680)) {
+			padding: 45px 20px 45px 20px;
+		}
+	}
+
+	// .info-block__col
+
+	&__col {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		&:last-child {
+			flex: 0 0 405px;
+			row-gap: 25px;
+			@include adaptiveValue("padding-top", 58, 0, 1920, 1000, 1);
+		}
+		@media (max-width: em(1200)) {
+			&:last-child {
+				row-gap: 22px;
+			}
+		}
+	}
+
+	// .info-block__title
+
+	&__title {
+		margin-bottom: rem(45);
+		img {
+			width: 100%;
+			height: 100%;
+		}
+		@media (max-width: em(1200)) {
+			margin-right: rem(40);
+			margin-bottom: rem(60);
+		}
+		@media (max-width: $tablet) {
+			width: 330px;
+			margin-right: auto;
+			margin-bottom: rem(30);
+		}
+		@media (max-width: $mobileSmall) {
+			width: 100%;
+		}
+	}
+
+	// .info-block__dates
+
+	&__dates {
+		margin-bottom: rem(50);
+		display: flex;
+		justify-content: space-between;
+		font-weight: 600;
+		font-size: 30px;
+		line-height: 37px;
+		@media (max-width: em(1200)) {
+			flex-direction: column;
+			row-gap: 17px;
+		}
+		@media (max-width: $tablet) {
+			margin-bottom: rem(30);
+		}
+	}
+
+	// .info-block__date
+
+	&__date {
+	}
+
+	// .info-block__desc
+
+	&__desc {
+		padding-right: 37px;
+		font-size: 24px;
+		line-height: 36px;
+		@media (max-width: em(1200)) {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	// .info-block__text
+
+	&__text {
+		font-size: 24px;
+		line-height: 36px;
+		&:not(:last-child) {
+			margin-bottom: rem(50);
+		}
+		@media (max-width: em(1200)) {
+			font-size: 20px;
+			line-height: 28px;
+			&:not(:last-child) {
+				margin-bottom: rem(30);
+			}
+		}
+	}
+
+	// .info-block__link
+
+	&__link {
+		display: block;
+		margin-bottom: rem(45);
+		align-self: flex-start;
+		max-width: 190px;
+		height: 48px;
+		padding: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@media (max-width: em(1200)) {
+			margin-bottom: rem(55);
+		}
+		@media (max-width: $tablet) {
+			margin-bottom: rem(30);
+		}
+	}
+
+	// .info-block__row-in
+
+	&__row-in {
+		display: flex;
+		&:last-child {
+			margin-top: rem(65);
+			position: relative;
+			&::before {
+				content: "";
+				width: 100%;
+				position: absolute;
+				top: -35px;
+				left: 0;
+				background: #d9e0e7;
+				mix-blend-mode: normal;
+				opacity: 0.5;
+				height: 1px;
+			}
+		}
+		@media (max-width: em(1200)) {
+			&:last-child {
+				margin-top: rem(47);
+			}
+		}
+		@media (max-width: $mobile) {
+			justify-content: space-between;
+		}
+		@media (max-width: em(375)) {
+			flex-wrap: wrap;
+		}
+	}
+
+	// .info-block__icon
+
+	&__icon {
+		flex: 0 0 24px;
+		margin: 0px 20px 0px 0px;
+	}
+
+	// .info-block__icon-svg
+
+	&__icon-svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	// .info-block__row-name
+
+	&__row-name {
+		line-height: 20px;
+		flex: 0 0 170px;
+		margin-right: 60px;
+		@media (max-width: $mobile) {
+			margin-right: 25px;
+		}
+		@media (max-width: $mobileSmall) {
+			flex: 0 0 121px;
+		}
+		@media (max-width: em(375)) {
+			flex: 1 1 auto;
+			margin-bottom: rem(10);
+		}
+	}
+
+	// .info-block__row-value
+
+	&__row-value {
+		line-height: 20px;
+		flex: 1 1 auto;
+		@media (max-width: em(375)) {
+			flex: 1 1 100%;
+			padding-left: 44px;
+		}
+	}
+}
+
+.slider-video {
+	background: url(../img/timetable_bg.png) bottom no-repeat;
+	@include adaptiveValue("padding-bottom", 115, 0);
+	@include adaptiveValue("margin-bottom", 95, 50);
+	@media (min-width: em(1921)) {
+		background: url(../img/timetable_bg.png) bottom / 100% no-repeat;
+	}
+	// .slider-video__header
+
+	&__header {
+		margin: 0px 0px 30px 0px;
+		@media (min-width: em(550)) {
+			margin: 0px 0px 55px 0px;
+			display: flex;
+			gap: 50px;
+			align-items: center;
+		}
+	}
+
+	// .slider-video__title
+
+	&__title {
+		font-weight: 600;
+		font-size: 30px;
+		line-height: 37px;
+		@media (max-width: em(549.49)) {
+			margin-bottom: rem(20);
+		}
+	}
+
+	// .slider-video__nav
+
+	&__nav {
+		.swiper-button {
+			height: 55px;
+			width: 55px;
+			padding: 0px 19px;
+			transition: all 0.3s ease 0s;
+			border-radius: 4px;
+			outline: none;
+			&:hover {
+				background: rgba(255, 255, 255, 0.0699028);
+			}
+			&.swiper-button-disabled {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+
+			// .swiper-button__svg
+
+			&__svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	// .slider-video__content
+
+	&__content {
+	}
+
+	// .slider-video__slider
+
+	&__slider {
+		&.swiper {
+			overflow: visible;
+		}
+	}
+
+	// .slider-video__wrapper
+
+	&__wrapper {
+	}
+
+	// .slider-video__slide
+
+	&__slide {
+		cursor: pointer;
+		position: relative;
+		&.swiper-slide-next {
+			z-index: 10 !important;
+		}
+		&:hover {
+			z-index: 11;
+		}
+		&:nth-child(odd) {
+			@include adaptiveValue("width", 320, 171, 680, 375, 1);
+		}
+		&:nth-child(even) {
+			@include adaptiveValue("width", 250, 132, 680, 375, 1);
+		}
+	}
+}
+
+.slider-video {
+	// .slider-video__slide
+
+	&__slide {
+	}
+
+	// .slider-video__fancybox
+
+	&__fancybox {
+		display: block;
+		transition: all 0.3s ease 0s;
+		&.video {
+			position: relative;
+			&::before {
+				content: url(../img/play_btn_shadow.svg);
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				bottom: 0px;
+				transition: all 0.3s ease 0s;
+				pointer-events: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			&:hover {
+				&::before {
+					opacity: 0;
+				}
+			}
+		}
+		img,
+		video {
+			border-radius: 20px;
+			overflow: hidden;
+			width: 100%;
+			@include adaptiveValue("height", 407, 217, 680, 375, 1);
+			object-fit: cover;
+		}
+		img {
+		}
+		video {
+		}
+	}
+}
+.swiper-slide {
+}
+
+.tour-timetable {
+	margin-bottom: rem(140);
+	@media (max-width: $tablet) {
+		margin-bottom: rem(00);
+	}
+	// .tour-timetable__container
+
+	&__container {
+	}
+
+	// .tour-timetable__row
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		@media (min-width: $tablet) {
+			&:not(:first-child) {
+				.tour-timetable__desc {
+					padding-top: 75px;
+				}
+			}
+			&:nth-child(odd) {
+				@include adaptiveValue("padding-left", 160, 80, 1920, 991);
+				.tour-timetable__list {
+					@include adaptiveValue("padding-left", 160, 0, 1920, 1280, 1);
+					@include adaptiveValue("padding-right", 160, 110, 1920, 1280, 1);
+				}
+				@media (max-width: em(1280)) {
+					.tour-timetable__list {
+						@include adaptiveValue("padding-right", 110, 80, 1280, 1000, 1);
+					}
+				}
+				@media (max-width: $tablet) {
+					@include adaptiveValue("padding-left", 80, 20, 992, 680, 1);
+				}
+			}
+			&:nth-child(even) {
+				flex-direction: row-reverse;
+				@include adaptiveValue("padding-right", 160, 80, 1920, 991);
+				.tour-timetable__images {
+					&::before,
+					&::after {
+						transform: scale(-1, 1);
+					}
+				}
+				.tour-timetable__desc {
+					@include adaptiveValue("padding-left", 160, 100, 1920, 1280, 1);
+				}
+				@media (max-width: em(1280)) {
+					.tour-timetable__desc {
+						@include adaptiveValue("padding-left", 100, 80, 1280, 1000, 1);
+					}
+				}
+				@media (max-width: $tablet) {
+					@include adaptiveValue("padding-right", 80, 20, 992, 680, 1);
+				}
+			}
+		}
+		@media (max-width: $tablet) {
+			flex-direction: column-reverse;
+			&:nth-child(even) {
+				.tour-timetable__images {
+					&::before,
+					&::after {
+						transform: scale(-1, 1);
+					}
+				}
+			}
+		}
+	}
+
+	// .tour-timetable__desc
+
+	&__desc {
+		flex: 0 1 45.5%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding-bottom: 60px;
+		@media (max-width: $tablet) {
+			padding-top: 60px;
+			padding-bottom: 80px;
+			@include adaptiveValue("padding-left", 80, 20, 1000, 375, 1);
+			@include adaptiveValue("padding-right", 80, 20, 1000, 375, 1);
+		}
+		@media (max-width: $mobileSmall) {
+			padding-bottom: 50px;
+		}
+	}
+
+	// .tour-timetable__title
+
+	&__title {
+		margin-bottom: rem(60);
+		@include adaptiveValue("width", 505, 320, 1920, 1280, 1);
+		@media (max-width: $tablet) {
+			@include adaptiveValue("width", 320, 200, 1000, 375, 1);
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	// .tour-timetable__list
+
+	&__list {
+	}
+
+	// .tour-timetable__item
+
+	&__item {
+		font-size: 24px;
+		line-height: 36px;
+		&:not(:last-child) {
+			margin-bottom: rem(45);
+		}
+	}
+
+	// .tour-timetable__images
+
+	&__images {
+		flex: 0 1 54.5%;
+		position: relative;
+		height: 100%;
+		@media (min-width: em(1921)) {
+			flex: 0 1 53.2%;
+		}
+		&::before {
+			content: "";
+			width: 100%;
+			height: 76px;
+			top: 0;
+			left: 0;
+			position: absolute;
+			background: url(@img/tour-timetable-shadow-top.svg) 100% / cover no-repeat;
+		}
+		&::after {
+			content: "";
+			width: 100%;
+			height: 76px;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			background: url(@img/tour-timetable-shadow-bottom.svg) 100% / cover no-repeat;
+		}
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.included-tour {
+	margin-bottom: rem(170);
+	// .included-tour__container
+
+	&__container {
+		display: flex;
+		gap: 50px;
+		@media (max-width: em(1400)) {
+			flex-wrap: wrap;
+			gap: 100px;
+		}
+		@media (max-width: $mobile) {
+			gap: 60px;
+			@include adaptiveValue("padding-left", 85, 20, 780, 375, 1);
+		}
+	}
+
+	// .included-tour__col
+
+	&__col {
+		flex: 0 1 25%;
+		@media (max-width: em(1400)) {
+			flex: 0 1 calc(50% - 50px);
+		}
+		@media (max-width: $mobile) {
+			flex: 1 1 100%;
+		}
+	}
+
+	// .included-tour__image
+
+	&__image {
+		margin-bottom: rem(25);
+	}
+
+	// .included-tour__title
+
+	&__title {
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 24px;
+		margin-bottom: rem(25);
+	}
+
+	// .included-tour__list
+
+	&__list {
+	}
+
+	// .included-tour__item
+
+	&__item {
+		line-height: 24px;
+		&:not(:last-child) {
+			margin-bottom: rem(25);
+		}
+	}
+}
