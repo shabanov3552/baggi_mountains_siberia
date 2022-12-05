@@ -1180,6 +1180,98 @@ body::after {
   max-width: 100%;
 }
 
+.ytb-btn {
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 36px;
+  position: absolute;
+  right: 7%;
+  top: 66%;
+  z-index: 10000000;
+}
+
+.ytb-btn:hover .ytb-btn__arrow {
+  -webkit-animation: transformYtbButton 0.3s ease;
+          animation: transformYtbButton 0.3s ease;
+}
+
+.ytb-btn__ytb-logo {
+  margin-left: 0.6875rem;
+}
+
+.ytb-btn__arrow {
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  -o-transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+  margin-left: 2rem;
+}
+
+@-webkit-keyframes transformYtbButton {
+  10% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+
+  30% {
+    -webkit-transform: translate(5px, 0px);
+            transform: translate(5px, 0px);
+  }
+
+  50% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+
+  70% {
+    -webkit-transform: translate(5px, 0px);
+            transform: translate(5px, 0px);
+  }
+
+  100% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+}
+
+@keyframes transformYtbButton {
+  10% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+
+  30% {
+    -webkit-transform: translate(5px, 0px);
+            transform: translate(5px, 0px);
+  }
+
+  50% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+
+  70% {
+    -webkit-transform: translate(5px, 0px);
+            transform: translate(5px, 0px);
+  }
+
+  100% {
+    -webkit-transform: translate(-5px, 0px);
+            transform: translate(-5px, 0px);
+  }
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -1631,57 +1723,6 @@ body::after {
   -webkit-transform: translate(40%, 0px);
       -ms-transform: translate(40%, 0px);
           transform: translate(40%, 0px);
-}
-
-.fullscreen-block .swiper-button-prev,
-.fullscreen-block .swiper-button-next {
-  opacity: 0;
-  mix-blend-mode: normal;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 64px;
-  z-index: 2;
-}
-
-.fullscreen-block .swiper-button-prev.swiper-button-disabled,
-.fullscreen-block .swiper-button-next.swiper-button-disabled {
-  display: none;
-}
-
-.fullscreen-block .swiper-button-prev svg,
-.fullscreen-block .swiper-button-next svg {
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  width: 17px;
-  height: 27px;
-}
-
-.fullscreen-block .swiper-button-prev svg use,
-.fullscreen-block .swiper-button-next svg use {
-  fill: #fff;
-}
-
-.fullscreen-block .swiper-button-prev:hover svg,
-.fullscreen-block .swiper-button-next:hover svg {
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
-}
-
-.fullscreen-block .swiper-button-next {
-  background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
-  background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
-  right: 0;
-}
-
-.fullscreen-block .swiper-button-prev {
-  left: 0;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
-  background: -o-linear-gradient(left, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .main-slider {
@@ -5026,6 +5067,80 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     -o-transition: all 0.3s ease 1.7s;
     transition: all 0.3s ease 1.7s;
   }
+
+  .fullscreen-block__slider-btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 64px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: (1fr)[2];
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .fullscreen-block .swiper-button-prev,
+  .fullscreen-block .swiper-button-next {
+    opacity: 0;
+    mix-blend-mode: normal;
+    height: 100%;
+    width: 64px;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 50px 0;
+  }
+
+  .fullscreen-block .swiper-button-prev.swiper-button-disabled svg,
+  .fullscreen-block .swiper-button-next.swiper-button-disabled svg {
+    opacity: 0.3;
+  }
+
+  .fullscreen-block .swiper-button-prev svg,
+  .fullscreen-block .swiper-button-next svg {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    width: 17px;
+    height: 27px;
+  }
+
+  .fullscreen-block .swiper-button-prev svg use,
+  .fullscreen-block .swiper-button-next svg use {
+    fill: #fff;
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+
+  .fullscreen-block .swiper-button-next {
+    background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    right: 0;
+    top: 0;
+  }
+
+  .fullscreen-block .swiper-button-prev {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    right: 0;
+    bottom: 0;
+    background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+  }
 }
 
 @media (min-width: 61.99875em) {
@@ -5474,22 +5589,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   }
 }
 
-@media (max-width: 30em) {
-  .fullscreen-block .swiper-button-prev svg,
-  .fullscreen-block .swiper-button-next svg {
-    -webkit-transform: translate(0px, 120px);
-        -ms-transform: translate(0px, 120px);
-            transform: translate(0px, 120px);
-  }
-
-  .fullscreen-block .swiper-button-prev:hover svg,
-  .fullscreen-block .swiper-button-next:hover svg {
-    -webkit-transform: scale(1.2) translate(0px, 100px);
-        -ms-transform: scale(1.2) translate(0px, 100px);
-            transform: scale(1.2) translate(0px, 100px);
-  }
-}
-
 @media (max-width: 87.5em) {
   .included-tour__container {
     -ms-flex-wrap: wrap;
@@ -5596,6 +5695,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
   .menu__item {
     padding: 0px 0px 30px 0px;
+  }
+
+  .ytb-btn {
+    bottom: 70px;
+    right: 3%;
+    top: auto;
   }
 
   .header__menu .menu__body {
@@ -6068,6 +6173,20 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     }
 }
 
+  .ytb-btn {
+    bottom: 0;
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .ytb-btn .ytb-btn__arrow {
+    margin-left: 0.625rem;
+  }
+
+  .ytb-btn .ytb-btn__ytb-logo {
+    width: 80px;
+  }
+
   .header.full-animation .header__container {
     -webkit-transform: translate(0px, 0px);
         -ms-transform: translate(0px, 0px);
@@ -6134,7 +6253,53 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
   .fullscreen-block .swiper-button-prev,
   .fullscreen-block .swiper-button-next {
-    opacity: 1;
+    opacity: 0;
+    mix-blend-mode: normal;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 64px;
+    z-index: 2;
+  }
+
+  .fullscreen-block .swiper-button-prev.swiper-button-disabled,
+  .fullscreen-block .swiper-button-next.swiper-button-disabled {
+    display: none;
+  }
+
+  .fullscreen-block .swiper-button-prev svg,
+  .fullscreen-block .swiper-button-next svg {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    width: 17px;
+    height: 27px;
+  }
+
+  .fullscreen-block .swiper-button-prev svg use,
+  .fullscreen-block .swiper-button-next svg use {
+    fill: #fff;
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+
+  .fullscreen-block .swiper-button-next {
+    background: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    right: 0;
+  }
+
+  .fullscreen-block .swiper-button-prev {
+    left: 0;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.3645833333)), to(rgba(0, 0, 0, 0)));
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.3645833333) 0%, rgba(0, 0, 0, 0) 100%);
   }
 
 @supports (margin-top: clamp( -4.6875rem , 9.4339327743rem  +  -29.4204177699vw , -3.4375rem )) {
@@ -6227,7 +6392,14 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   }
 }
 
-@media (max-width: 47.5em) {
+@media (max-width: 47.99875em) and (max-width: 47.99875em) {
+  .fullscreen-block .swiper-button-prev,
+  .fullscreen-block .swiper-button-next {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 47.99875em) and (max-width: 47.5em) {
   .fullscreen-block .swiper-button-prev svg,
   .fullscreen-block .swiper-button-next svg {
     -webkit-transform: translate(0px, 65px);
@@ -6240,6 +6412,38 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     -webkit-transform: scale(1.2) translate(0px, 55px);
         -ms-transform: scale(1.2) translate(0px, 55px);
             transform: scale(1.2) translate(0px, 55px);
+  }
+}
+
+@media (max-width: 47.99875em) and (max-width: 37.5em) {
+  .fullscreen-block .swiper-button-prev svg,
+  .fullscreen-block .swiper-button-next svg {
+    -webkit-transform: translate(0px, 40px);
+        -ms-transform: translate(0px, 40px);
+            transform: translate(0px, 40px);
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2) translate(0px, 35px);
+        -ms-transform: scale(1.2) translate(0px, 35px);
+            transform: scale(1.2) translate(0px, 35px);
+  }
+}
+
+@media (max-width: 47.99875em) and (max-width: 30em) {
+  .fullscreen-block .swiper-button-prev svg,
+  .fullscreen-block .swiper-button-next svg {
+    -webkit-transform: translate(0px, 120px);
+        -ms-transform: translate(0px, 120px);
+            transform: translate(0px, 120px);
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2) translate(0px, 100px);
+        -ms-transform: scale(1.2) translate(0px, 100px);
+            transform: scale(1.2) translate(0px, 100px);
   }
 }
 
@@ -6357,20 +6561,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 100%;
             flex: 1 1 100%;
-  }
-
-  .fullscreen-block .swiper-button-prev svg,
-  .fullscreen-block .swiper-button-next svg {
-    -webkit-transform: translate(0px, 40px);
-        -ms-transform: translate(0px, 40px);
-            transform: translate(0px, 40px);
-  }
-
-  .fullscreen-block .swiper-button-prev:hover svg,
-  .fullscreen-block .swiper-button-next:hover svg {
-    -webkit-transform: scale(1.2) translate(0px, 35px);
-        -ms-transform: scale(1.2) translate(0px, 35px);
-            transform: scale(1.2) translate(0px, 35px);
   }
 
   .reviews__slide {
@@ -6515,6 +6705,11 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     margin-bottom: 30px;
   }
 
+  .ytb-btn {
+    bottom: -20px;
+    right: 10px;
+  }
+
   .fullscreen-block__row {
     display: block;
   }
@@ -6652,6 +6847,54 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+
+@media (min-width: 47.99875em) and (max-width: 47.99875em) {
+  .fullscreen-block .swiper-button-prev,
+  .fullscreen-block .swiper-button-next {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 47.99875em) and (max-width: 47.5em) {
+  .fullscreen-block .swiper-button-prev,
+  .fullscreen-block .swiper-button-next {
+    -webkit-transform: translate(0px, 65px);
+        -ms-transform: translate(0px, 65px);
+            transform: translate(0px, 65px);
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@media (min-width: 47.99875em) and (max-width: 37.5em) {
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2) translate(0px, 35px);
+        -ms-transform: scale(1.2) translate(0px, 35px);
+            transform: scale(1.2) translate(0px, 35px);
+  }
+}
+
+@media (min-width: 47.99875em) and (max-width: 30em) {
+  .fullscreen-block .swiper-button-prev svg,
+  .fullscreen-block .swiper-button-next svg {
+    -webkit-transform: translate(0px, 120px);
+        -ms-transform: translate(0px, 120px);
+            transform: translate(0px, 120px);
+  }
+
+  .fullscreen-block .swiper-button-prev:hover svg,
+  .fullscreen-block .swiper-button-next:hover svg {
+    -webkit-transform: scale(1.2) translate(0px, 100px);
+        -ms-transform: scale(1.2) translate(0px, 100px);
+            transform: scale(1.2) translate(0px, 100px);
   }
 }
 
