@@ -1199,12 +1199,15 @@ body::after {
 .fullscreen-block .ytb-btn {
   position: absolute;
   right: 7%;
-  top: 66%;
+  top: 50%;
   z-index: 3;
   opacity: 0;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  -webkit-transform: translate(0px, 200px);
+      -ms-transform: translate(0px, 200px);
+          transform: translate(0px, 200px);
 }
 
 .ytb-btn:hover .ytb-btn__arrow {
@@ -5402,6 +5405,10 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 @media (max-width: 100em) {
+  .fullscreen-block .ytb-btn {
+    right: 20px;
+  }
+
   .copyright__item:first-child {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 32%;
@@ -5712,9 +5719,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   }
 
   .fullscreen-block .ytb-btn {
-    bottom: 70px;
     right: 3%;
-    top: auto;
   }
 
   .header__menu .menu__body {
@@ -6189,10 +6194,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
   .fullscreen-block .ytb-btn {
     opacity: 1;
-  }
-
-  .fullscreen-block .ytb-btn {
-    bottom: 0;
     font-size: 16px;
     padding: 10px 15px;
   }
@@ -6724,7 +6725,9 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   }
 
   .fullscreen-block .ytb-btn {
-    bottom: -40px;
+    -webkit-transform: translate(0px, 270px);
+        -ms-transform: translate(0px, 270px);
+            transform: translate(0px, 270px);
     right: 10px;
   }
 
