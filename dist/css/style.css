@@ -1406,22 +1406,20 @@ body::after {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 45%;
           flex: 0 1 45%;
+  position: relative;
+  z-index: 10;
+}
+
+.header__contacts-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-column-gap: 34px;
-     -moz-column-gap: 34px;
-          column-gap: 34px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  position: relative;
-  z-index: 10;
+  -webkit-column-gap: 34px;
+     -moz-column-gap: 34px;
+          column-gap: 34px;
 }
 
 .header__link {
@@ -1436,7 +1434,8 @@ body::after {
   margin: 0px 0px 10px 0px;
 }
 
-.header__link-svg {
+.header__link-svg,
+.header__link-img {
   width: 26px;
   height: 26px;
   margin: 0px 10px 0px 0px;
@@ -3335,6 +3334,326 @@ body::after {
   margin-bottom: 1.5625rem;
 }
 
+.price-calc .select__title {
+  background: #4a637f;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.price-calc .select__value {
+  min-height: 48px;
+}
+
+.price-calc .select__value::after {
+  background: url(../img/sel-arr-dwn.svg) 100%/contain no-repeat;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 12px;
+          flex: 0 0 12px;
+}
+
+.price-calc .select__options {
+  background: #4a637f;
+  top: 120%;
+  border-radius: 5px;
+  border: none;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.price-calc .select__option[hidden] {
+  background: #38506b;
+}
+
+.price-calc .select__option:hover {
+  background: #38506b;
+}
+
+.price-calc {
+  margin-bottom: 8.75rem;
+  padding: 0 15px;
+}
+
+.price-calc__container {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  max-width: 1380px;
+  border-radius: 20px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.0329129);
+}
+
+.price-calc__top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.128747);
+  padding: 40px 50px;
+}
+
+.price-calc__title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  margin-bottom: 2.5rem;
+}
+
+.price-calc__bottom {
+  padding: 30px 50px 60px;
+}
+
+.price-calc__btn {
+  display: inline-block;
+  padding: 15.5px 35px 15.5px 25px;
+}
+
+.price-calc__link-to-cars {
+  margin-top: 1.5625rem;
+  display: inline-block;
+  line-height: 24px;
+  border-bottom: 1px dashed #fff;
+}
+
+.price-calc__link-to-cars:hover {
+  border-bottom: 1px solid transparent;
+}
+
+.cost-tour__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 434px;
+  grid-template-columns: 1fr 434px;
+}
+
+.cost-tour__select-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 17px;
+}
+
+.cost-tour__label {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 223px;
+          flex: 0 0 223px;
+}
+
+.cost-tour__sel-title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+  margin-bottom: 0.875rem;
+  display: inline-block;
+}
+
+.cost-title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+  margin-bottom: 0.4375rem;
+}
+
+.cost-price {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+}
+
+.cost-rent__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 434px;
+  grid-template-columns: 1fr 434px;
+}
+
+.cost-rent__cheks-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.cost-rent__cheks-cars {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 223px);
+  -webkit-column-gap: 16px;
+     -moz-column-gap: 16px;
+          column-gap: 16px;
+  row-gap: 25px;
+}
+
+.cost-rent__total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.price-calc .checkbox {
+  margin: 0;
+}
+
+.price-calc .checkbox.car {
+  -ms-grid-columns: -webkit-min-content;
+  -ms-grid-columns: min-content;
+  grid-template-columns: -webkit-min-content;
+  grid-template-columns: min-content;
+}
+
+.price-calc .checkbox.car .checkbox__label::after {
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.price-calc .checkbox.car .car__descr {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.price-calc .checkbox.car .car__img {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 84px;
+  height: 50px;
+}
+
+.price-calc .checkbox.car .car__img img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.price-calc .checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.price-calc .checkbox__input:checked + .checkbox__label {
+  background: rgba(0, 0, 0, 0.174798);
+  -webkit-box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.price-calc .checkbox__input:checked + .checkbox__label:hover {
+  -webkit-box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5), 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5), 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.price-calc .checkbox__input:checked + .checkbox__label::after {
+  background: #fff url(../img/check.svg) center no-repeat;
+  border: 2px solid #fff;
+}
+
+.price-calc .checkbox__input:disabled + .checkbox__label {
+  opacity: 0.3;
+}
+
+.price-calc .checkbox__input:disabled + .checkbox__label:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.price-calc .checkbox__input:checked:disabled + .checkbox__label:hover {
+  -webkit-box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.price-calc .checkbox__label {
+  cursor: pointer;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr auto;
+  grid-template-columns: 1fr auto;
+  background: rgba(255, 255, 255, 0.104868);
+  border-radius: 10px;
+  padding: 0.8125rem;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.price-calc .checkbox__label::after {
+  content: "";
+  display: block;
+  background-color: transparent;
+  border: 2px solid #979797;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  margin-left: 0.9375rem;
+}
+
+.price-calc .checkbox__label:hover {
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.price-calc .checkbox__text {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+  color: #fff;
+  opacity: 1;
+}
+
+.total-cost__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 30px;
+}
+
+.total-cost__col {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 190px;
+          flex: 0 0 190px;
+}
+
+.total-cost__col .cost-price {
+  margin-bottom: 1.5625rem;
+}
+
+.total-cost__error-msg {
+  color: #FFB6B6;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+
 .about {
   padding-top: 70px;
 }
@@ -4978,7 +5297,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 @media (min-width: 40.625em) {
-  .header__link-svg_mobile {
+  .header__link_mobile {
+    display: none;
+  }
+
+  .header__link-svg_mobile,
+  .header__link-img_mobile {
     display: none;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
@@ -5268,6 +5592,12 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 60%;
             flex: 0 1 60%;
+  }
+}
+
+@media (min-width: 73.8125em) {
+  .header__contacts-row_desctop {
+    margin-right: 28px;
   }
 }
 
@@ -5655,6 +5985,18 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 @media (max-width: 78.125em) {
   .reserv__row {
     gap: 70px;
+  }
+}
+
+@media (max-width: 73.75em) {
+  .header__contacts-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
 }
 
@@ -6521,21 +6863,40 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 @media (max-width: 40.5625em) {
+  .header__menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 24px;
+  }
+
   .header__logo {
     padding: 0px 20px;
   }
 
-  .header__contacts {
+  .header__contacts-row {
     -webkit-column-gap: 24px;
        -moz-column-gap: 24px;
             column-gap: 24px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .header__contacts-row_desctop {
+    display: none;
   }
 
   .header__link {
     margin: 0;
   }
 
-  .header__link-svg {
+  .header__link-svg,
+  .header__link-img {
     margin: 0;
   }
 

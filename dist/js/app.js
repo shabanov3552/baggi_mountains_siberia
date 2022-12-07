@@ -3821,7 +3821,7 @@
                         targetElement.classList.add("_form-focus");
                         targetElement.parentElement.classList.add("_form-focus");
                         targetElement.addEventListener("input", (function(e) {
-                            if (e.target.value.length > 0) targetElement.parentElement.querySelector(".form__input-clear").classList.add("_active");
+                            if (e.target.value.length > 0 && !targetElement.closest('[type="checkbox"]')) targetElement.parentElement.querySelector(".form__input-clear").classList.add("_active");
                         }));
                     }
                     formValidate.removeError(targetElement);
@@ -12176,6 +12176,24 @@
                 }), 550);
             }
         }
+        function calcCostParticipation(cost, adults = 1, children = 0) {
+            return adults * cost + children * (.3 * cost);
+        }
+        function getCost(selector) {
+            let str = document.querySelector(selector).innerText.split("");
+            console.log(str);
+        }
+        function setCostParticipation(e) {
+            let cost = getCost(".js-cost"), adults = document.querySelector(".js-adults select").value, children = document.querySelector(".js-children select").value;
+            calcCostParticipation(cost, adults, children);
+        }
+        document.addEventListener("DOMContentLoaded", (function(e) {
+            const priceCalc = document.querySelector(".price-calc__form");
+            priceCalc.addEventListener("change", (e => {
+                console.log(e);
+            }));
+            document.addEventListener("selectCallback", setCostParticipation);
+        }));
         window["FLS"] = true;
         isWebp();
         addLoadedClass();

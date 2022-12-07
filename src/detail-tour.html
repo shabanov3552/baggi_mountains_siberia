@@ -32,7 +32,7 @@
 							</div>
 						</div>
 						<div class="info-block__col">
-							<a data-popup="#reserv" href="#" class="info-block__link btn">Забронировать</a>
+							<!-- <a data-popup="#reserv" href="#" class="info-block__link btn">Забронировать</a> -->
 							<div class="info-block__row-in">
 								<div class="info-block__icon">
 									<svg class="info-block__icon-svg">
@@ -95,14 +95,159 @@
 									</svg>
 								</div>
 								<div class="info-block__row-name">Стоимость</div>
-								<div class="info-block__row-value">90 000 ₽</div>
+								<div class="info-block__row-value js-cost">от 50 000 ₽</div>
 							</div>
 						</div>
 					</div>
 
 				</div>
 			</div>
-
+			<div class="price-calc">
+				<div data-one-select class="price-calc__container">
+					<form action="" class="price-calc__form">
+						<div class="price-calc__top">
+							<div class="price-calc__title">Расчет стоимости</div>
+							<div class="price-calc__cost">
+								<div class="cost-tour">
+									<div class="cost-tour__row">
+										<div class="cost-tour__select-block">
+											<label class="cost-tour__label js-adults">
+												<span class="cost-tour__sel-title">Количество взрослых</span>
+												<select name="form[]">
+													<option value="1" selected>1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
+											</label>
+											<label class="cost-tour__label js-children">
+												<span class="cost-tour__sel-title">Детей (до 14 лет вкл.)</span>
+												<select name="form[]">
+													<option value="0" selected>0</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
+											</label>
+										</div>
+										<div class="cost-tour__total">
+											<div class="cost-title">Стоимость участия</div>
+											<div class="cost-price">100 000 ₽</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="price-calc__bottom">
+							<div class="cost-rent">
+								<div class="cost-rent__row">
+									<div class="cost-rent__cheks">
+										<div class="cost-rent__cheks-top">
+											<div class="checkbox">
+												<!-- checked по умолчанию -->
+												<input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_1" name="form[]" checked>
+												<label for="c_1" class="checkbox__label"><span class="checkbox__text">Аренда багги</span></label>
+											</div>
+											<div class="checkbox">
+												<input id="c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_2" name="form[]">
+												<label for="c_2" class="checkbox__label"><span class="checkbox__text">Своя техника</span></label>
+											</div>
+											<div class="checkbox">
+												<input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_3" name="form[]">
+												<label for="c_3" class="checkbox__label"><span class="checkbox__text">Пассажир без управления</span></label>
+											</div>
+										</div>
+										<div class="cost-rent__cheks-cars">
+											<div class="checkbox car">
+												<input id="cc_11" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_1" name="form[]">
+												<label for="cc_11" class="checkbox__label">
+													<span class="checkbox__text">Polaris RZR 1000</span>
+													<div class="car__descr">4-местный</div>
+													<div class="car__img"><img src="@img/technique_1.png" alt=""></div>
+												</label>
+											</div>
+											<div class="checkbox car">
+												<input id="cc_12" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_2" name="form[]">
+												<label for="cc_12" class="checkbox__label">
+													<span class="checkbox__text">Polaris RZR 1000</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-2.png" alt=""></div>
+												</label>
+											</div>
+											<div class="checkbox car">
+												<input id="cc_13" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_3" name="form[]">
+												<label for="cc_13" class="checkbox__label">
+													<span class="checkbox__text">BRP Commander</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-3.png" alt=""></div>
+												</label>
+											</div>
+											<div class="checkbox car">
+												<input id="cc_14" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_4" name="form[]">
+												<label for="cc_14" class="checkbox__label">
+													<span class="checkbox__text">Polaris RZR 1000</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-4.png" alt=""></div>
+												</label>
+											</div>
+											<div class="checkbox car">
+												<input id="cc_15" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_5" name="form[]">
+												<label for="cc_15" class="checkbox__label">
+													<span class="checkbox__text">Polaris RZR PRO</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-5.png" alt=""></div>
+												</label>
+											</div>
+											<div class="checkbox car">
+												<input id="cc_16" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_6" name="form[]">
+												<label for="cc_16" class="checkbox__label">
+													<span class="checkbox__text">BRP Maverick X3</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-6.png" alt=""></div>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="cost-rent__total">
+										<div class="cost-rent__top">
+											<div class="cost-title">Стоимость аренды за 3 ходовых дня</div>
+											<div class="cost-price">50 000 ₽</div>
+										</div>
+										<div class="cost-rent__bottom">
+											<div class="total-cost">
+												<div class="total-cost__row">
+													<div class="total-cost__col">
+														<div class="cost-title">Итого</div>
+														<div class="cost-price">150 000 ₽</div>
+														<a data-popup="#reserv" href="#" class="price-calc__btn btn">Забронировать</a>
+													</div>
+													<div class="total-cost__error-msg">
+														Вам необходимо выбрать больше единиц техники или «своя техника» или «пассажир без управления»
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<a href="#technique" class="price-calc__link-to-cars">Подробнее о технике</a>
+						</div>
+					</form>
+				</div>
+			</div>
 			<div class="slider-video">
 				<div class="slider-video__container">
 					<div class="slider-video__header">
@@ -342,7 +487,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="technique">
+			<div id="technique" class="technique">
 				<div class="technique__container">
 					<div class="technique__title">
 						<svg class="technique__title-svg">

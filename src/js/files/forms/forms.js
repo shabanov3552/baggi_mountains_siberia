@@ -32,7 +32,7 @@ export function formFieldsInit(options = { viewPass: false }) {
 				targetElement.classList.add('_form-focus');
 				targetElement.parentElement.classList.add('_form-focus');
 				targetElement.addEventListener('input', function (e) {
-					if (e.target.value.length > 0) {
+					if (e.target.value.length > 0 && !targetElement.closest('[type="checkbox"]')) {
 						targetElement.parentElement.querySelector('.form__input-clear').classList.add('_active')
 					}
 				})

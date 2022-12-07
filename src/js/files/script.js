@@ -174,3 +174,49 @@ function animationTourCard(e) {
 }
 
 //#endregion
+
+//#region Калькулятор стоимости участия
+
+function calcCostParticipation(cost, adults = 1, children = 0) {
+	return adults * cost + children * (cost * 0.3);
+}
+
+function calcCostRentBaggi(carPrice, days) {
+	return carPrice * days;
+}
+function getCost(selector) {
+	let str = document.querySelector(selector).innerText.split('');
+	console.log(str);
+
+}
+function setCostParticipation(e) {
+	let cost = getCost('.js-cost'),
+		adults = document.querySelector('.js-adults select').value,
+		children = document.querySelector('.js-children select').value,
+		price = calcCostParticipation(cost, adults, children);
+
+	// console.log(cost);
+}
+// price-calc__form
+
+document.addEventListener("DOMContentLoaded", function (e) {
+	const priceCalc = document.querySelector('.price-calc__form');
+
+	priceCalc.addEventListener('change', e => {
+		console.log(e);
+	});
+
+
+	document.addEventListener("selectCallback", setCostParticipation);
+	// document.addEventListener("selectCallback", function (e) {
+	// 	// Селект 
+	// 	const currentSelect = e.detail.select;
+	// 	console.log(currentSelect.value);
+	// 	console.log(e);
+	// 	// currentSelect.onchange();
+	// });
+
+
+});
+//#endregion
+

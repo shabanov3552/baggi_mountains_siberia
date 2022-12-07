@@ -5,6 +5,7 @@
 		position: relative;
 		height: 100vh;
 		min-height: 650px;
+
 		@media (max-width: $tablet) {
 			height: 584px;
 			min-height: none;
@@ -33,6 +34,7 @@
 		left: 0;
 		width: 100%;
 		height: 613px;
+
 		// border-top-left-radius: 20px;
 		// border-top-right-radius: 20px;
 		// background: rgba(46, 74, 107, 0.5);
@@ -50,6 +52,7 @@
 		margin: 0 auto;
 		background: rgba(46, 74, 107, 0.95);
 		border-radius: 20px;
+
 		@media (max-width: em(1280)) {
 			@include adaptiveValue("max-width", 1218, 939, 1280, 1000, 1);
 		}
@@ -64,11 +67,13 @@
 		@include adaptiveValue("gap", 170, 60, 1920, 1280, 1);
 		display: flex;
 		padding: 80px 0px 80px 0px;
+
 		@media (max-width: em(1280)) {
 			padding: 70px 0px 70px 0px;
 			@include adaptiveValue("padding-left", 75, 50, 1280, 1000, 1);
 			@include adaptiveValue("padding-right", 75, 50, 1280, 1000, 1);
 		}
+
 		@media (max-width: $tablet) {
 			padding: 55px 0px 55px 0px;
 			@include adaptiveValue("padding-left", 50, 30, 1000, 680, 1);
@@ -76,6 +81,7 @@
 			flex-direction: column;
 			gap: 25px;
 		}
+
 		@media (max-width: em(680)) {
 			padding: 45px 20px 45px 20px;
 		}
@@ -88,11 +94,13 @@
 		z-index: 2;
 		display: flex;
 		flex-direction: column;
+
 		&:last-child {
 			flex: 0 0 405px;
 			row-gap: 25px;
 			@include adaptiveValue("padding-top", 58, 0, 1920, 1000, 1);
 		}
+
 		@media (max-width: em(1200)) {
 			&:last-child {
 				row-gap: 22px;
@@ -104,19 +112,23 @@
 
 	&__title {
 		margin-bottom: rem(45);
+
 		img {
 			width: 100%;
 			height: 100%;
 		}
+
 		@media (max-width: em(1200)) {
 			margin-right: rem(40);
 			margin-bottom: rem(60);
 		}
+
 		@media (max-width: $tablet) {
 			width: 330px;
 			margin-right: auto;
 			margin-bottom: rem(30);
 		}
+
 		@media (max-width: $mobileSmall) {
 			width: 100%;
 		}
@@ -131,10 +143,12 @@
 		font-weight: 600;
 		font-size: 30px;
 		line-height: 37px;
+
 		@media (max-width: em(1200)) {
 			flex-direction: column;
 			row-gap: 17px;
 		}
+
 		@media (max-width: $tablet) {
 			margin-bottom: rem(30);
 		}
@@ -142,8 +156,7 @@
 
 	// .info-block__date
 
-	&__date {
-	}
+	&__date {}
 
 	// .info-block__desc
 
@@ -151,6 +164,7 @@
 		padding-right: 37px;
 		font-size: 24px;
 		line-height: 36px;
+
 		@media (max-width: em(1200)) {
 			font-size: 20px;
 			line-height: 28px;
@@ -162,12 +176,15 @@
 	&__text {
 		font-size: 24px;
 		line-height: 36px;
+
 		&:not(:last-child) {
 			margin-bottom: rem(50);
 		}
+
 		@media (max-width: em(1200)) {
 			font-size: 20px;
 			line-height: 28px;
+
 			&:not(:last-child) {
 				margin-bottom: rem(30);
 			}
@@ -186,9 +203,11 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		@media (max-width: em(1200)) {
 			margin-bottom: rem(55);
 		}
+
 		@media (max-width: $tablet) {
 			margin-bottom: rem(30);
 		}
@@ -198,9 +217,11 @@
 
 	&__row-in {
 		display: flex;
+
 		&:last-child {
 			margin-top: rem(65);
 			position: relative;
+
 			&::before {
 				content: "";
 				width: 100%;
@@ -213,14 +234,17 @@
 				height: 1px;
 			}
 		}
+
 		@media (max-width: em(1200)) {
 			&:last-child {
 				margin-top: rem(47);
 			}
 		}
+
 		@media (max-width: $mobile) {
 			justify-content: space-between;
 		}
+
 		@media (max-width: em(375)) {
 			flex-wrap: wrap;
 		}
@@ -246,12 +270,15 @@
 		line-height: 20px;
 		flex: 0 0 170px;
 		margin-right: 60px;
+
 		@media (max-width: $mobile) {
 			margin-right: 25px;
 		}
+
 		@media (max-width: $mobileSmall) {
 			flex: 0 0 121px;
 		}
+
 		@media (max-width: em(375)) {
 			flex: 1 1 auto;
 			margin-bottom: rem(10);
@@ -263,6 +290,7 @@
 	&__row-value {
 		line-height: 20px;
 		flex: 1 1 auto;
+
 		@media (max-width: em(375)) {
 			flex: 1 1 100%;
 			padding-left: 44px;
@@ -274,13 +302,16 @@
 	background: url(../img/timetable_bg.png) bottom no-repeat;
 	@include adaptiveValue("padding-bottom", 115, 0);
 	@include adaptiveValue("margin-bottom", 95, 50);
+
 	@media (min-width: em(1921)) {
 		background: url(../img/timetable_bg.png) bottom / 100% no-repeat;
 	}
+
 	// .slider-video__header
 
 	&__header {
 		margin: 0px 0px 30px 0px;
+
 		@media (min-width: em(550)) {
 			margin: 0px 0px 55px 0px;
 			display: flex;
@@ -295,6 +326,7 @@
 		font-weight: 600;
 		font-size: 30px;
 		line-height: 37px;
+
 		@media (max-width: em(549.49)) {
 			margin-bottom: rem(20);
 		}
@@ -310,9 +342,11 @@
 			transition: all 0.3s ease 0s;
 			border-radius: 4px;
 			outline: none;
+
 			&:hover {
 				background: rgba(255, 255, 255, 0.0699028);
 			}
+
 			&.swiper-button-disabled {
 				opacity: 0.5;
 				pointer-events: none;
@@ -329,8 +363,7 @@
 
 	// .slider-video__content
 
-	&__content {
-	}
+	&__content {}
 
 	// .slider-video__slider
 
@@ -342,23 +375,26 @@
 
 	// .slider-video__wrapper
 
-	&__wrapper {
-	}
+	&__wrapper {}
 
 	// .slider-video__slide
 
 	&__slide {
 		cursor: pointer;
 		position: relative;
+
 		&.swiper-slide-next {
 			z-index: 10 !important;
 		}
+
 		&:hover {
 			z-index: 11;
 		}
+
 		&:nth-child(odd) {
 			@include adaptiveValue("width", 320, 171, 680, 375, 1);
 		}
+
 		&:nth-child(even) {
 			@include adaptiveValue("width", 250, 132, 680, 375, 1);
 		}
@@ -368,16 +404,17 @@
 .slider-video {
 	// .slider-video__slide
 
-	&__slide {
-	}
+	&__slide {}
 
 	// .slider-video__fancybox
 
 	&__fancybox {
 		display: block;
 		transition: all 0.3s ease 0s;
+
 		&.video {
 			position: relative;
+
 			&::before {
 				content: url(../img/play_btn_shadow.svg);
 				width: 100%;
@@ -391,12 +428,14 @@
 				justify-content: center;
 				align-items: center;
 			}
+
 			&:hover {
 				&::before {
 					opacity: 0;
 				}
 			}
 		}
+
 		img,
 		video {
 			border-radius: 20px;
@@ -405,77 +444,92 @@
 			@include adaptiveValue("height", 407, 217, 680, 375, 1);
 			object-fit: cover;
 		}
-		img {
-		}
-		video {
-		}
+
+		img {}
+
+		video {}
 	}
 }
-.swiper-slide {
-}
+
+.swiper-slide {}
 
 .tour-timetable {
 	margin-bottom: rem(140);
+
 	@media (max-width: $tablet) {
 		margin-bottom: rem(00);
 	}
+
 	// .tour-timetable__container
 
-	&__container {
-	}
+	&__container {}
 
 	// .tour-timetable__row
 
 	&__row {
 		display: flex;
 		justify-content: space-between;
+
 		@media (min-width: $tablet) {
 			&:not(:first-child) {
 				.tour-timetable__desc {
 					padding-top: 75px;
 				}
 			}
+
 			&:nth-child(odd) {
 				@include adaptiveValue("padding-left", 160, 80, 1920, 991);
+
 				.tour-timetable__list {
 					@include adaptiveValue("padding-left", 160, 0, 1920, 1280, 1);
 					@include adaptiveValue("padding-right", 160, 110, 1920, 1280, 1);
 				}
+
 				@media (max-width: em(1280)) {
 					.tour-timetable__list {
 						@include adaptiveValue("padding-right", 110, 80, 1280, 1000, 1);
 					}
 				}
+
 				@media (max-width: $tablet) {
 					@include adaptiveValue("padding-left", 80, 20, 992, 680, 1);
 				}
 			}
+
 			&:nth-child(even) {
 				flex-direction: row-reverse;
 				@include adaptiveValue("padding-right", 160, 80, 1920, 991);
+
 				.tour-timetable__images {
+
 					&::before,
 					&::after {
 						transform: scale(-1, 1);
 					}
 				}
+
 				.tour-timetable__desc {
 					@include adaptiveValue("padding-left", 160, 100, 1920, 1280, 1);
 				}
+
 				@media (max-width: em(1280)) {
 					.tour-timetable__desc {
 						@include adaptiveValue("padding-left", 100, 80, 1280, 1000, 1);
 					}
 				}
+
 				@media (max-width: $tablet) {
 					@include adaptiveValue("padding-right", 80, 20, 992, 680, 1);
 				}
 			}
 		}
+
 		@media (max-width: $tablet) {
 			flex-direction: column-reverse;
+
 			&:nth-child(even) {
 				.tour-timetable__images {
+
 					&::before,
 					&::after {
 						transform: scale(-1, 1);
@@ -494,12 +548,14 @@
 		justify-content: center;
 		align-items: flex-start;
 		padding-bottom: 60px;
+
 		@media (max-width: $tablet) {
 			padding-top: 60px;
 			padding-bottom: 80px;
 			@include adaptiveValue("padding-left", 80, 20, 1000, 375, 1);
 			@include adaptiveValue("padding-right", 80, 20, 1000, 375, 1);
 		}
+
 		@media (max-width: $mobileSmall) {
 			padding-bottom: 50px;
 		}
@@ -510,9 +566,11 @@
 	&__title {
 		margin-bottom: rem(60);
 		@include adaptiveValue("width", 505, 320, 1920, 1280, 1);
+
 		@media (max-width: $tablet) {
 			@include adaptiveValue("width", 320, 200, 1000, 375, 1);
 		}
+
 		img {
 			width: 100%;
 			height: 100%;
@@ -521,14 +579,14 @@
 
 	// .tour-timetable__list
 
-	&__list {
-	}
+	&__list {}
 
 	// .tour-timetable__item
 
 	&__item {
 		font-size: 24px;
 		line-height: 36px;
+
 		&:not(:last-child) {
 			margin-bottom: rem(45);
 		}
@@ -540,9 +598,11 @@
 		flex: 0 1 54.5%;
 		position: relative;
 		height: 100%;
+
 		@media (min-width: em(1921)) {
 			flex: 0 1 53.2%;
 		}
+
 		&::before {
 			content: "";
 			width: 100%;
@@ -552,6 +612,7 @@
 			position: absolute;
 			background: url(@img/tour-timetable-shadow-top.svg) 100% / cover no-repeat;
 		}
+
 		&::after {
 			content: "";
 			width: 100%;
@@ -561,6 +622,7 @@
 			position: absolute;
 			background: url(@img/tour-timetable-shadow-bottom.svg) 100% / cover no-repeat;
 		}
+
 		img {
 			width: 100%;
 		}
@@ -574,10 +636,12 @@
 	&__container {
 		display: flex;
 		gap: 50px;
+
 		@media (max-width: em(1400)) {
 			flex-wrap: wrap;
 			gap: 100px;
 		}
+
 		@media (max-width: $mobile) {
 			gap: 60px;
 			@include adaptiveValue("padding-left", 85, 20, 780, 375, 1);
@@ -588,9 +652,11 @@
 
 	&__col {
 		flex: 0 1 25%;
+
 		@media (max-width: em(1400)) {
 			flex: 0 1 calc(50% - 50px);
 		}
+
 		@media (max-width: $mobile) {
 			flex: 1 1 100%;
 		}
@@ -613,15 +679,400 @@
 
 	// .included-tour__list
 
-	&__list {
-	}
+	&__list {}
 
 	// .included-tour__item
 
 	&__item {
 		line-height: 24px;
+
 		&:not(:last-child) {
 			margin-bottom: rem(25);
 		}
 	}
 }
+
+
+//========================================================================================================================================================
+
+.price-calc .select {
+	// ._select-active
+
+	&_select-active {}
+
+	// .select__body
+
+	&__body {}
+
+	// .select__title
+
+	&__title {
+		background: #4a637f;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	// .select__value
+
+	&__value {
+		min-height: 48px;
+
+		&::after {
+			background: url(../img/sel-arr-dwn.svg) 100%/contain no-repeat;
+			flex: 0 0 12px;
+		}
+	}
+
+	// .select__content
+
+	&__content {}
+
+	// .select__options
+
+	&__options {
+		background: #4a637f;
+		top: 120%;
+		border-radius: 5px;
+		border: none;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		color: #fff;
+	}
+
+	// .select__option
+
+	&__option {
+		&[hidden] {
+			background: #38506b;
+		}
+
+		&:hover {
+			background: #38506b;
+		}
+	}
+}
+
+
+
+.price-calc {
+	margin-bottom: rem(140);
+	padding: 0 15px;
+
+	// .price-calc__container
+
+	&__container {
+		appearance: none;
+		max-width: 1380px;
+		border-radius: 20px;
+		padding: 0;
+		background: rgba(255, 255, 255, 0.0329129);
+	}
+
+	// .price-calc__form
+
+	&__form {}
+
+	// .price-calc__top
+
+	&__top {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.128747);
+		padding: 40px 50px;
+	}
+
+	// .price-calc__title
+
+	&__title {
+		font-weight: 600;
+		font-size: 30px;
+		line-height: 37px;
+		margin-bottom: rem(40);
+	}
+
+	// .price-calc__cost
+
+	&__cost {}
+
+	// .price-calc__bottom
+
+	&__bottom {
+		padding: 30px 50px 60px;
+	}
+
+	// .price-calc__btn
+
+	&__btn {
+		display: inline-block;
+		padding: 15.5px 35px 15.5px 25px;
+	}
+
+	// .price-calc__link-to-cars
+
+	&__link-to-cars {
+		margin-top: rem(25);
+		display: inline-block;
+		line-height: 24px;
+		border-bottom: 1px dashed #fff;
+
+		&:hover {
+			border-bottom: 1px solid transparent;
+		}
+
+		&:link,
+		&:visited {}
+	}
+}
+
+.cost-tour {
+
+	// .cost-tour__row
+
+	&__row {
+		display: grid;
+		grid-template-columns: 1fr 434px;
+	}
+
+	// .cost-tour__select-block
+
+	&__select-block {
+		display: flex;
+		gap: 17px;
+	}
+
+	// .cost-tour__label
+
+	&__label {
+		flex: 0 0 223px;
+	}
+
+	// .cost-tour__sel-title
+
+	&__sel-title {
+		font-weight: 600;
+		font-size: 17px;
+		line-height: 21px;
+		margin-bottom: rem(14);
+		display: inline-block;
+	}
+
+	// .cost-tour__total
+
+	&__total {}
+}
+
+.cost-title {
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 21px;
+	margin-bottom: rem(7);
+}
+
+.cost-price {
+	font-weight: 600;
+	font-size: 30px;
+	line-height: 37px;
+}
+
+.cost-rent {
+
+	// .cost-rent__row
+
+	&__row {
+		display: grid;
+		grid-template-columns: 1fr 434px;
+	}
+
+	// .cost-rent__cheks
+
+	&__cheks {}
+
+	// .cost-rent__cheks-top
+
+	&__cheks-top {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 14px;
+		margin-bottom: rem(40);
+	}
+
+	// .cost-rent__cheks-cars
+
+	&__cheks-cars {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 223px);
+		column-gap: 16px;
+		row-gap: 25px;
+
+	}
+
+	// .cost-rent__total
+
+	&__total {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	// .cost-rent__top
+
+	&__top {}
+
+	// .cost-rent__bottom
+
+	&__bottom {}
+}
+
+.price-calc .checkbox {
+	margin: 0;
+
+	&.car {
+		grid-template-columns: min-content;
+
+		.checkbox__label {
+			&::after {
+				justify-self: end;
+			}
+		}
+
+		.car__descr {
+			grid-row: 2/3;
+			grid-column: 1/2;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 17px;
+			align-self: end;
+		}
+
+		.car__img {
+			grid-column: 2/3;
+			grid-row: 2/3;
+			width: 84px;
+			height: 50px;
+
+			img {
+				width: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+
+	// .checkbox__input
+
+	&__input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+
+		&:checked+.checkbox__label {
+			background: rgba(0, 0, 0, 0.174798);
+			box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+
+			&:hover {
+				box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5), 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+			}
+
+			&::after {
+				background: #fff url(../img/check.svg) center no-repeat;
+				border: 2px solid #fff;
+			}
+		}
+
+		&:focus+.checkbox__label {
+			&::after {}
+		}
+
+		&:disabled+.checkbox__label {
+			opacity: 0.3;
+
+			&:hover {
+				box-shadow: none;
+			}
+
+			&::after {}
+		}
+
+		&:checked:disabled+.checkbox__label {
+			&:hover {
+				box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.5);
+			}
+
+			&::after {}
+		}
+	}
+
+	// .checkbox__label
+
+	&__label {
+		cursor: pointer;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		background: rgba(255, 255, 255, 0.104868);
+		border-radius: 10px;
+		padding: rem(13);
+		transition: all 0.3s ease 0s;
+
+		&::after {
+			content: '';
+			display: block;
+			background-color: transparent;
+			border: 2px solid #979797;
+			width: 24px;
+			height: 24px;
+			border-radius: 5px;
+			margin-left: rem(15);
+		}
+
+		&:hover {
+			box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	// .checkbox__text
+
+	&__text {
+		font-weight: 600;
+		font-size: 17px;
+		line-height: 21px;
+		color: #fff;
+		opacity: 1;
+	}
+
+}
+
+
+.total-cost {
+
+	// .total-cost__row
+
+	&__row {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 30px;
+	}
+
+	// .total-cost__col
+
+	&__col {
+		flex: 0 0 190px;
+
+		.cost-price {
+			margin-bottom: rem(25);
+		}
+	}
+
+	// .total-cost__error-msg
+
+	&__error-msg {
+		color: #FFB6B6;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+.btn {}
