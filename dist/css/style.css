@@ -1434,6 +1434,10 @@ body::after {
   margin: 0px 0px 10px 0px;
 }
 
+.header__link_mobile {
+  z-index: 10;
+}
+
 .header__link-svg,
 .header__link-img {
   width: 26px;

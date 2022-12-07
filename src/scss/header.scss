@@ -182,6 +182,8 @@
 		}
 
 		&_mobile {
+			z-index: 10;
+
 			@media (min-width:em(650)) {
 				display: none;
 			}
