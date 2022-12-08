@@ -12083,26 +12083,14 @@
         const videoBlock = document.querySelector(".main-slider, .slider-video__content, .about");
         if (videoBlock) {
             videoBlock.addEventListener("mouseover", (function(e) {
-                let intervalId;
-                if (e.target.closest("video")) {
-                    let video = e.target;
-                    clearInterval(intervalId);
-                    video.play();
-                }
+                let target = e.target;
+                if (target.closest("video")) target.play();
             }));
             videoBlock.addEventListener("mouseout", (function(e) {
-                let intervalId;
-                if (e.target.closest("video")) {
-                    let video = e.target;
-                    clearInterval(intervalId);
-                    video.pause();
-                    intervalId = setInterval((() => {
-                        video.currentTime += -.1;
-                        if (video.currentTime <= 0) {
-                            clearInterval(intervalId);
-                            video.load();
-                        }
-                    }), 30);
+                let target = e.target;
+                if (target.closest("video")) {
+                    target.pause();
+                    target.currentTime = 0;
                 }
             }));
         }
@@ -12112,9 +12100,6 @@
         }));
         document.addEventListener("afterPopupOpen", (function(e) {
             if (e.detail.popup.targetOpen.element.querySelector("video")) e.detail.popup.targetOpen.element.querySelector("video").play();
-        }));
-        document.addEventListener("afterPopupClose", (function(e) {
-            if (e.detail.popup.targetOpen.element.querySelector("video")) e.detail.popup.targetOpen.element.querySelector("video").load();
         }));
         function txtarAutoHeight(target) {
             const el = target;
@@ -12151,50 +12136,79 @@
         }));
         const fullScreenBlock = document.querySelector(".fullscreen-block");
         if (fullScreenBlock) document.querySelector(".header").classList.add("full-animation");
-        if (document.querySelector(".tours")) {
-            copyTourImages();
-            const toursCards = document.querySelectorAll(".tours__content");
-            toursCards.forEach((card => {
-                card.addEventListener("mouseenter", animationTourCard);
-            }));
-        }
-        function copyTourImages() {
-            const toursImages = document.querySelectorAll(".tours__image");
-            toursImages.forEach((item => {
-                var imageCopy = item.querySelector("img").cloneNode();
-                imageCopy.setAttribute("class", "img-copy");
-                item.append(imageCopy);
-            }));
-        }
-        function animationTourCard(e) {
-            const target = e.target;
-            const targetImg = target.parentElement.querySelector(".tours__image");
-            if (!targetImg.classList.contains("hover-anim")) {
-                targetImg.classList.add("hover-anim");
-                setTimeout((() => {
-                    targetImg.classList.remove("hover-anim");
-                }), 550);
+        let tourCalculator = {
+            tourPrice: 0,
+            adults: 1,
+            children: 0,
+            runDays: 0,
+            totalTourPrice: 0,
+            totalRentPrice: 0,
+            totalPrice: 0,
+            tourists: 1,
+            errorMsg: document.querySelector(".total-cost__error-msg"),
+            getNum: function(selector) {
+                return +document.querySelector(selector).innerText.split("").filter((item => {
+                    if (!isNaN(parseInt(item))) return item;
+                })).join("");
+            },
+            calcCostParticipation: function() {
+                return this.adults * this.tourPrice + this.children * (.3 * this.tourPrice);
+            },
+            setTotalTourPrice: function(selector) {
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.calcCostParticipation());
+                this.totalTourPrice = this.calcCostParticipation();
+            },
+            formattedPrice: num => `${new Intl.NumberFormat("ru-RU").format(num)} ₽`,
+            setTotalPrice: function(selector) {
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
+            },
+            getRentPrice: function() {
+                let price = 0;
+                this.cars.forEach((car => {
+                    if (car.querySelector("input").checked) price += +car.dataset.carPrice;
+                }));
+                return price;
+            },
+            getCarPlaces: function() {
+                let places = 0;
+                this.cars.forEach((car => {
+                    if (car.querySelector("input").checked) places += +car.dataset.carPlaces;
+                }));
+                return places;
+            },
+            setTotalRentPrice: function(selector) {
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.getRentPrice() * this.runDays);
+                this.totalRentPrice = this.getRentPrice() * this.runDays;
             }
-        }
-        function calcCostParticipation(cost, adults = 1, children = 0) {
-            return adults * cost + children * (.3 * cost);
-        }
-        function getCost(selector) {
-            let str = document.querySelector(selector).innerText.split("");
-            console.log(str);
-        }
-        function setCostParticipation(e) {
-            let cost = getCost(".js-cost"), adults = document.querySelector(".js-adults select").value, children = document.querySelector(".js-children select").value;
-            calcCostParticipation(cost, adults, children);
-        }
+        };
         document.addEventListener("DOMContentLoaded", (function(e) {
-            const priceCalc = document.querySelector(".price-calc__form");
-            priceCalc.addEventListener("change", (e => {
-                console.log(e);
+            tourCalculator.priceCalcForm = document.querySelector(".price-calc__form");
+            tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll(".checkbox.car");
+            tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector("[data-run-days]").dataset.runDays;
+            tourCalculator.tourPrice = tourCalculator.getNum(".js-tour-price");
+            tourCalculator.priceCalcForm.addEventListener("change", (e => {
+                const target = e.target;
+                if (target.closest(".js-car-rent")) if (target.checked) tourCalculator.cars.forEach((item => {
+                    item.querySelector("input").disabled = false;
+                })); else tourCalculator.cars.forEach((item => {
+                    item.querySelector("input").disabled = true;
+                }));
+                tourCalculator.setTotalRentPrice(".js-total-rent-price");
+                tourCalculator.setTotalPrice(".js-total-price");
             }));
-            document.addEventListener("selectCallback", setCostParticipation);
+            document.addEventListener("selectCallback", (e => {
+                let target = e.detail.select;
+                if (target.closest(".js-adults")) tourCalculator.adults = +target.value;
+                if (target.closest(".js-children")) tourCalculator.children = +target.value;
+                tourCalculator.tourists = tourCalculator.children + tourCalculator.adults;
+                tourCalculator.setTotalTourPrice(".js-total-tour-price");
+                tourCalculator.setTotalPrice(".js-total-price");
+            }));
+            tourCalculator.setTotalRentPrice(".js-total-rent-price");
+            tourCalculator.setTotalTourPrice(".js-total-tour-price");
+            tourCalculator.setTotalPrice(".js-total-price");
         }));
-        window["FLS"] = true;
+        window["FLS"] = false;
         isWebp();
         addLoadedClass();
         menuInit();

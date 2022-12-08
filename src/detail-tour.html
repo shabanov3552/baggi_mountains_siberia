@@ -95,7 +95,8 @@
 									</svg>
 								</div>
 								<div class="info-block__row-name">Стоимость</div>
-								<div class="info-block__row-value js-cost">от 50 000 ₽</div>
+								<!-- js-tour-price отсюда берется стоимость тура для калькулятора -->
+								<div class="info-block__row-value js-tour-price">от 50 000 ₽</div>
 							</div>
 						</div>
 					</div>
@@ -145,7 +146,7 @@
 										</div>
 										<div class="cost-tour__total">
 											<div class="cost-title">Стоимость участия</div>
-											<div class="cost-price">100 000 ₽</div>
+											<div class="cost-price js-total-tour-price">100 000 ₽</div>
 										</div>
 									</div>
 								</div>
@@ -157,21 +158,23 @@
 									<div class="cost-rent__cheks">
 										<div class="cost-rent__cheks-top">
 											<div class="checkbox">
-												<!-- checked по умолчанию -->
-												<input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_1" name="form[]" checked>
+												<!-- чекбокс с классом js-car-rent, checked по умолчанию -->
+												<input id="c_1" data-error="Ошибка" class="checkbox__input js-car-rent" type="checkbox" value="c_1" name="form[]" checked>
 												<label for="c_1" class="checkbox__label"><span class="checkbox__text">Аренда багги</span></label>
 											</div>
 											<div class="checkbox">
-												<input id="c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_2" name="form[]">
+												<input id="c_2" data-error="Ошибка" class="checkbox__input js-own-cars" type="checkbox" value="c_2" name="form[]">
 												<label for="c_2" class="checkbox__label"><span class="checkbox__text">Своя техника</span></label>
 											</div>
 											<div class="checkbox">
-												<input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="c_3" name="form[]">
+												<input id="c_3" data-error="Ошибка" class="checkbox__input js-passenger" type="checkbox" value="c_3" name="form[]">
 												<label for="c_3" class="checkbox__label"><span class="checkbox__text">Пассажир без управления</span></label>
 											</div>
 										</div>
 										<div class="cost-rent__cheks-cars">
-											<div class="checkbox car">
+											<!-- в аттрибут data-car-price добавить стоимость аренды машины (заполняется в админке),
+												  в аттрибут data-car-places добавлять количество сидячих метс в машине (заполняется в админке)-->
+											<div data-car-price="20000" data-car-places="4" class="checkbox car">
 												<input id="cc_11" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_1" name="form[]">
 												<label for="cc_11" class="checkbox__label">
 													<span class="checkbox__text">Polaris RZR 1000</span>
@@ -179,7 +182,7 @@
 													<div class="car__img"><img src="@img/technique_1.png" alt=""></div>
 												</label>
 											</div>
-											<div class="checkbox car">
+											<div data-car-price="30000" data-car-places="2" class="checkbox car">
 												<input id="cc_12" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_2" name="form[]">
 												<label for="cc_12" class="checkbox__label">
 													<span class="checkbox__text">Polaris RZR 1000</span>
@@ -187,7 +190,7 @@
 													<div class="car__img"><img src="@img/car-mini-2.png" alt=""></div>
 												</label>
 											</div>
-											<div class="checkbox car">
+											<div data-car-price="09213" data-car-places="2" class="checkbox car">
 												<input id="cc_13" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_3" name="form[]">
 												<label for="cc_13" class="checkbox__label">
 													<span class="checkbox__text">BRP Commander</span>
@@ -195,7 +198,7 @@
 													<div class="car__img"><img src="@img/car-mini-3.png" alt=""></div>
 												</label>
 											</div>
-											<div class="checkbox car">
+											<div data-car-price="12453" data-car-places="2" class="checkbox car">
 												<input id="cc_14" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_4" name="form[]">
 												<label for="cc_14" class="checkbox__label">
 													<span class="checkbox__text">Polaris RZR 1000</span>
@@ -203,7 +206,7 @@
 													<div class="car__img"><img src="@img/car-mini-4.png" alt=""></div>
 												</label>
 											</div>
-											<div class="checkbox car">
+											<div data-car-price="36548" data-car-places="2" class="checkbox car">
 												<input id="cc_15" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_5" name="form[]">
 												<label for="cc_15" class="checkbox__label">
 													<span class="checkbox__text">Polaris RZR PRO</span>
@@ -211,7 +214,7 @@
 													<div class="car__img"><img src="@img/car-mini-5.png" alt=""></div>
 												</label>
 											</div>
-											<div class="checkbox car">
+											<div data-car-price="12345" data-car-places="2" class="checkbox car">
 												<input id="cc_16" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_6" name="form[]">
 												<label for="cc_16" class="checkbox__label">
 													<span class="checkbox__text">BRP Maverick X3</span>
@@ -223,18 +226,21 @@
 									</div>
 									<div class="cost-rent__total">
 										<div class="cost-rent__top">
-											<div class="cost-title">Стоимость аренды за 3 ходовых дня</div>
-											<div class="cost-price">50 000 ₽</div>
+											<!--	(ходовые дни – свойство, которое необходимо завести в админ панели в элементе тура, значение свойства выводится в калькуляторе 
+ 													в заголовке. Стоимость аренды за n ходовых дней). 
+													продублировать в аттрибут  data-run-days-->
+											<div data-run-days="3" class="cost-title">Стоимость аренды за 3 ходовых дня</div>
+											<div class="cost-price js-total-rent-price">50 000 ₽</div>
 										</div>
 										<div class="cost-rent__bottom">
 											<div class="total-cost">
 												<div class="total-cost__row">
 													<div class="total-cost__col">
 														<div class="cost-title">Итого</div>
-														<div class="cost-price">150 000 ₽</div>
+														<div class="cost-price js-total-price">150 000 ₽</div>
 														<a data-popup="#reserv" href="#" class="price-calc__btn btn">Забронировать</a>
 													</div>
-													<div class="total-cost__error-msg">
+													<div class="total-cost__error-msg" hidden>
 														Вам необходимо выбрать больше единиц техники или «своя техника» или «пассажир без управления»
 													</div>
 												</div>
@@ -279,7 +285,7 @@
 								</div>
 								<div class="slider-video__slide swiper-slide">
 									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
-										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="none" muted></video>
 									</a>
 								</div>
 								<div class="slider-video__slide swiper-slide">
@@ -289,7 +295,7 @@
 								</div>
 								<div class="slider-video__slide swiper-slide">
 									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
-										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="none" muted></video>
 									</a>
 								</div>
 								<div class="slider-video__slide swiper-slide">
@@ -299,7 +305,7 @@
 								</div>
 								<div class="slider-video__slide swiper-slide">
 									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
-										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="none" muted></video>
 									</a>
 								</div>
 								<div class="slider-video__slide swiper-slide">
@@ -309,7 +315,7 @@
 								</div>
 								<div class="slider-video__slide swiper-slide">
 									<a data-fancybox="gallery" href="files/video/slider-video-2.mp4" class="slider-video__fancybox">
-										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="metadata" muted></video>
+										<video poster="img/video_poster_2.jpg" src="files/video/slider-video-2.mp4" preload="none" muted></video>
 									</a>
 								</div>
 							</div>
