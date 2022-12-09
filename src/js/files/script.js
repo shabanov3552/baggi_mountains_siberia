@@ -359,7 +359,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		tourCalculator.setTotalRentPrice('.js-total-rent-price');
 		tourCalculator.setTotalTourPrice('.js-total-tour-price');
 		tourCalculator.setTotalPrice('.js-total-price');
-		console.log(tourCalculator.cars);
 
 		//! Временное действие для теста
 		// Добавление ценников машин в чекбокс
