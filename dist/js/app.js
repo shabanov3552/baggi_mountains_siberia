@@ -12314,7 +12314,6 @@
                 tourCalculator.setTotalRentPrice(".js-total-rent-price");
                 tourCalculator.setTotalTourPrice(".js-total-tour-price");
                 tourCalculator.setTotalPrice(".js-total-price");
-                console.log(tourCalculator.cars);
                 //! Временное действие для теста
                                 tourCalculator.cars.forEach((car => {
                     car.querySelector(".car__descr").insertAdjacentHTML("beforeEnd", `<br>Цена: ${car.dataset.carPrice} ₽`);

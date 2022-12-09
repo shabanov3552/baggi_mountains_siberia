@@ -277,6 +277,7 @@ let tourCalculator = {
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
+
 	// Добавляем в объект калькулятора форму калькулятора
 	tourCalculator.priceCalcForm = document.querySelector('.price-calc__form');
 	if (tourCalculator.priceCalcForm) {
