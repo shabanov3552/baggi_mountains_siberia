@@ -3660,6 +3660,7 @@ body::after {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  row-gap: 10px;
 }
 
 .price-calc .checkbox__label::after {
