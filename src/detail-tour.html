@@ -32,7 +32,6 @@
 							</div>
 						</div>
 						<div class="info-block__col">
-							<!-- <a data-popup="#reserv" href="#" class="info-block__link btn">Забронировать</a> -->
 							<div class="info-block__row-in">
 								<div class="info-block__icon">
 									<svg class="info-block__icon-svg">
@@ -112,6 +111,7 @@
 								<div class="cost-tour">
 									<div class="cost-tour__row">
 										<div class="cost-tour__select-block">
+											<!-- js-adults колличество взрослых участников -->
 											<label class="cost-tour__label js-adults">
 												<span class="cost-tour__sel-title">Количество взрослых</span>
 												<select name="form[]">
@@ -127,6 +127,7 @@
 													<option value="10">10</option>
 												</select>
 											</label>
+											<!--js-children Колличество Детей (до 14 лет вкл.) -->
 											<label class="cost-tour__label js-children">
 												<span class="cost-tour__sel-title">Детей (до 14 лет вкл.)</span>
 												<select name="form[]">
@@ -146,6 +147,7 @@
 										</div>
 										<div class="cost-tour__total">
 											<div class="cost-title">Стоимость участия</div>
+											<!-- js-total-tour-price Здесь будет выводится стоимость участия из калькулятора -->
 											<div class="cost-price js-total-tour-price">100 000 ₽</div>
 										</div>
 									</div>
@@ -172,8 +174,8 @@
 											</div>
 										</div>
 										<div class="cost-rent__cheks-cars">
-											<!-- в аттрибут data-car-price добавить стоимость аренды машины (заполняется в админке),
-												  в аттрибут data-car-places добавлять количество сидячих метс в машине (заполняется в админке)-->
+											<!-- в аттрибуты data-car-price добавлять стоимость аренды машины за день (заполняется в админке),
+												  в аттрибуты data-car-places добавлять количество сидячих метс в машине (заполняется в админке)-->
 											<div data-car-price="20000" data-car-places="4" class="checkbox car">
 												<input id="cc_11" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_1" name="form[]">
 												<label for="cc_11" class="checkbox__label">
@@ -190,7 +192,7 @@
 													<div class="car__img"><img src="@img/car-mini-2.png" alt=""></div>
 												</label>
 											</div>
-											<div data-car-price="09213" data-car-places="2" class="checkbox car">
+											<div data-car-price="91827" data-car-places="2" class="checkbox car">
 												<input id="cc_13" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_3" name="form[]">
 												<label for="cc_13" class="checkbox__label">
 													<span class="checkbox__text">BRP Commander</span>
@@ -214,9 +216,17 @@
 													<div class="car__img"><img src="@img/car-mini-5.png" alt=""></div>
 												</label>
 											</div>
-											<div data-car-price="12345" data-car-places="2" class="checkbox car">
+											<div data-car-price="46467" data-car-places="2" class="checkbox car">
 												<input id="cc_16" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_6" name="form[]">
 												<label for="cc_16" class="checkbox__label">
+													<span class="checkbox__text">BRP Maverick X3</span>
+													<div class="car__descr">2-местный</div>
+													<div class="car__img"><img src="@img/car-mini-6.png" alt=""></div>
+												</label>
+											</div>
+											<div data-car-price="53682" data-car-places="2" class="checkbox car">
+												<input id="cc_17" data-error="Ошибка" class="checkbox__input" type="checkbox" value="cc_7" name="form[]">
+												<label for="cc_17" class="checkbox__label">
 													<span class="checkbox__text">BRP Maverick X3</span>
 													<div class="car__descr">2-местный</div>
 													<div class="car__img"><img src="@img/car-mini-6.png" alt=""></div>
@@ -230,6 +240,7 @@
  													в заголовке. Стоимость аренды за n ходовых дней). 
 													продублировать в аттрибут  data-run-days-->
 											<div data-run-days="3" class="cost-title">Стоимость аренды за 3 ходовых дня</div>
+											<!-- js-total-rent-price Здесь будет выводится стоимость аренды техники из калькулятора -->
 											<div class="cost-price js-total-rent-price">50 000 ₽</div>
 										</div>
 										<div class="cost-rent__bottom">
@@ -237,6 +248,7 @@
 												<div class="total-cost__row">
 													<div class="total-cost__col">
 														<div class="cost-title">Итого</div>
+														<!-- js-total-price Здесь будет выводиться итоговая стоимость тура из калькулятора -->
 														<div class="cost-price js-total-price">150 000 ₽</div>
 														<a data-popup="#reserv" href="#" class="price-calc__btn btn">Забронировать</a>
 													</div>
@@ -249,7 +261,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="#technique" class="price-calc__link-to-cars">Подробнее о технике</a>
+							<a href="#" data-goto="#technique" class="price-calc__link-to-cars">Подробнее о технике</a>
 						</div>
 					</form>
 				</div>

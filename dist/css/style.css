@@ -1490,6 +1490,74 @@ body::after {
   display: none;
 }
 
+.header._header-scroll {
+  padding: 0;
+}
+
+._header-scroll .header__container {
+  padding: 10px 20px;
+}
+
+._header-scroll .header__row {
+  margin-top: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+._header-scroll .header__link {
+  margin: 0;
+}
+
+._header-scroll .header__logo {
+  margin: 0;
+}
+
+._header-scroll .header__logo-svg {
+  width: 60px;
+  height: 50px;
+}
+
+._header-scroll .header__contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+._header-scroll .header__contacts-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+._header-scroll .header__contacts-row_desctop {
+  margin-left: 34px;
+}
+
+._header-scroll .header__contacts-row_desctop .header__link:last-child {
+  display: none;
+}
+
+._header-scroll .header__link-svg_mobile {
+  display: block;
+}
+
+._header-scroll .header__link-span {
+  display: none;
+}
+
+._header-scroll .menu__list {
+  row-gap: 10px;
+}
+
+._header-scroll .menu__item {
+  padding: 0;
+}
+
 .no-webp .footer{
   background: url(../img/footer_bg.png) center bottom/cover no-repeat; }
 
@@ -3413,6 +3481,11 @@ body::after {
   padding: 15.5px 35px 15.5px 25px;
 }
 
+.price-calc__btn.off {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .price-calc__link-to-cars {
   margin-top: 1.5625rem;
   display: inline-block;
@@ -3424,24 +3497,11 @@ body::after {
   border-bottom: 1px solid transparent;
 }
 
-.cost-tour__row {
+.cost-tour__select-block {
+  gap: 17px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 434px;
-  grid-template-columns: 1fr 434px;
-}
-
-.cost-tour__select-block {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 17px;
-}
-
-.cost-tour__label {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 223px;
-          flex: 0 0 223px;
+  grid-template-columns: repeat(auto-fill, minmax(223px, 1fr));
 }
 
 .cost-tour__sel-title {
@@ -3465,13 +3525,6 @@ body::after {
   line-height: 37px;
 }
 
-.cost-rent__row {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 434px;
-  grid-template-columns: 1fr 434px;
-}
-
 .cost-rent__cheks-top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3485,7 +3538,7 @@ body::after {
 .cost-rent__cheks-cars {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 223px);
+  grid-template-columns: repeat(auto-fit, minmax(223px, 1fr));
   -webkit-column-gap: 16px;
      -moz-column-gap: 16px;
           column-gap: 16px;
@@ -3503,6 +3556,7 @@ body::after {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 35px;
 }
 
 .price-calc .checkbox {
@@ -3514,6 +3568,10 @@ body::after {
   -ms-grid-columns: min-content;
   grid-template-columns: -webkit-min-content;
   grid-template-columns: min-content;
+}
+
+.price-calc .checkbox.car .checkbox__label {
+  height: 100%;
 }
 
 .price-calc .checkbox.car .checkbox__label::after {
@@ -5585,6 +5643,24 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 }
 
+@media (min-width: 66.3125em) {
+  .cost-tour__row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 434px;
+    grid-template-columns: 1fr 434px;
+    gap: 30px;
+  }
+
+  .cost-rent__row {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 434px;
+    grid-template-columns: 1fr 434px;
+    gap: 30px;
+  }
+}
+
 @media (min-width: 68.75em) {
   .memo-tourist__col:first-child {
     -webkit-box-flex: 0;
@@ -6008,6 +6084,17 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   .memo-tourist__row {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 66.25em) {
+  .cost-tour__select-block {
+    grid-template-columns: repeat(auto-fit, minmax(223px, 1fr));
+    margin-bottom: 1.25rem;
+  }
+
+  .cost-rent__cheks {
+    margin-bottom: 1.875rem;
   }
 }
 
@@ -6719,6 +6806,20 @@ body:not(.is-using-mouse) .fancybox__container :focus {
             flex: 1 1 100%;
   }
 
+  .price-calc__top {
+    padding: 25px 10px;
+  }
+
+  .price-calc__title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 1.25rem;
+  }
+
+  .price-calc__bottom {
+    padding: 25px 10px;
+  }
+
   .page-contacts__item {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -7147,6 +7248,29 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
   .tour-timetable__desc {
     padding-bottom: 50px;
+  }
+
+  .cost-rent__cheks-top .checkbox {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+
+  .total-cost__row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 15px;
+  }
+
+  .total-cost__col {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
   }
 
   .page-contacts .link__download {

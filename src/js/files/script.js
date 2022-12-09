@@ -165,39 +165,25 @@ if (fullScreenBlock) {
 
 //#region Калькулятор стоимости участия
 
-// function getCost(selector) {
-// 	return document.querySelector(selector).innerText.split('').filter(item => {
-// 		if (!isNaN(parseInt(item))) {
-// 			return item;
-// 		}
-// 	}).join('');
-// }
-
-// function calcCostParticipation(cost, adults = 1, children = 0) {
-// 	return adults * cost + children * (cost * 0.3);
-// }
-
-// function setTotalTourPrice(e) {
-// 	let formatPrice = new Intl.NumberFormat('ru-RU').format(tourCalculator.calcCostParticipation());
-// 	document.querySelector('.js-total-tour-price').innerHTML = `${formatPrice} ₽`;
-// }
-
-function calcCostRentBaggi(carPrice, days) {
-	return carPrice * days;
-}
-
-
 let tourCalculator = {
-	tourPrice: 0,
-	adults: 1,
-	children: 0,
-	runDays: 0,
-	totalTourPrice: 0,
-	totalRentPrice: 0,
-	totalPrice: 0,
-	tourists: 1,
-	errorMsg: document.querySelector('.total-cost__error-msg'),
+	adults: 1, // колличество взрослых
+	children: 0, // колличество детей
+	tourists: 1, // общее колличество участников тура
 
+	runDays: 0, // колличество ходовых дней
+
+	ownCarsCheckbox: false, // Статус чекбокса "Своя техника"
+	passengerCheckbox: {
+		check: false, // Статус чекбокса "Пассажир без управления"
+		price: 9000 // Стоимсоть участия за пассажира без управления
+	},
+
+	checkedCars: [], // Массив с выбраными машинами
+
+	tourPrice: 0, // Стоимсоть тура начальная
+	totalTourPrice: 0, // Стоимость участия за всех участников тура
+	totalRentPrice: 0, // Стоимость аренды выбраной техники
+	totalPrice: 0, // Итоговая стоимость тура
 
 	// Берет стоимость тура из элемента и форматирует в число
 	getNum: function (selector) {
@@ -208,25 +194,14 @@ let tourCalculator = {
 		}).join('');
 	},
 
-	// Считает цену стоимости участия
-	calcCostParticipation: function () {
-		return this.adults * this.tourPrice + this.children * (this.tourPrice * 0.3);
-	},
-
-	// Устанавливает цену стоимости участия на странице
-	setTotalTourPrice: function (selector) {
-		document.querySelector(selector).innerHTML = this.formattedPrice(this.calcCostParticipation());
-		this.totalTourPrice = this.calcCostParticipation();
-	},
-
 	// Форматирует число разбивая пробелами и добавляя знак рубля
 	formattedPrice: (num) => {
 		return `${new Intl.NumberFormat('ru-RU').format(num)} ₽`;
 	},
 
-	// Устанавливает итоговую цену на странице
-	setTotalPrice: function (selector) {
-		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
+	// Считает цену стоимости участия за всех участников тура
+	calcCostParticipation: function () {
+		return this.adults * this.tourPrice + this.children * (this.tourPrice * 0.3);
 	},
 
 	// Считает общую стоимость аренды выбраных машин
@@ -251,111 +226,147 @@ let tourCalculator = {
 		return places;
 	},
 
-	// Устанавливает итоговую стоимость аренды машин за n колличество ходовых дней на странице и в объекте
-	setTotalRentPrice: function (selector) {
-		document.querySelector(selector).innerHTML = this.formattedPrice(this.getRentPrice() * this.runDays);
-		this.totalRentPrice = this.getRentPrice() * this.runDays;
+	// Добавляем стоимость участия в объект и на страницу 
+	setTotalTourPrice: function (selector) {
+		this.totalTourPrice = this.calcCostParticipation();
+		// Выводим стоимость на страницу
+		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalTourPrice);
 	},
 
-	// Проверяем, хватает ли мест в машинах и статусы чекбоксов
-	// checkSeatsInCars: function (checkbox = false) {
-	// 	if (!checkbox) {
-	// 		console.log(checkbox);
-	// 		return;
-	// 	}
-	// 	// Если клик на чекбокс "Своя техника"
-	// 	if (checkbox.closest('.js-own-cars').checked) {
-	// 		console.log(checkbox);
-	// 		return;
-	// 	}
-	// 	// Если клик на чекбокс "Пассажир без управления"
-	// 	if (checkbox.closest('.js-passenger').checked) {
-	// 		console.log(checkbox);
-	// 		return;
-	// 	}
-	// 	// if (this.tourists > this.getCarPlaces()) {
-	// 	// 	this.errorMsg.hidden = false;
-	// 	// } else {
-	// 	// 	this.errorMsg.hidden = true;
-	// 	// }
-	// }
+	// Добавляем итоговую стоимость аренды машин за n колличество ходовых дней в объект и на страницу
+	setTotalRentPrice: function (selector) {
+		// Проверяем прожат ли чекбокс "Пассажир без управления"
+		if (this.passengerCheckbox.check) {
+			// Считаем стоимость аренды машин и цену за участие без управления за n ходовых дней и добавляем в объект
+			this.totalRentPrice = (this.getRentPrice() + this.passengerCheckbox.price) * this.runDays;
+			// Выводим стоимость на страницу
+			document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice);
+			return;
+		}
+		// Считаем стоимость аренды машин за n ходовых дней
+		this.totalRentPrice = this.getRentPrice() * this.runDays;
+		// Выводим стоимость на страницу
+		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice);
+	},
 
+	// Устанавливает итоговую цену на странице
+	setTotalPrice: function (selector) {
+		// Проверяем хватает ли мест в машинах всем участникам
+		if (this.getCarPlaces() < this.tourists) {
+			// Если не хватает выводим об этом сообщение
+			this.errorMsg.hidden = false;
+			// Деактивируем кнопку "Забровнировать"
+			this.priceCalcForm.querySelector('.price-calc__btn').classList.add('off');
+			// Проверяем прожат один из чекбоксов, если да, прячем сообщение
+			if (this.ownCarsCheckbox || this.passengerCheckbox.check) {
+				this.errorMsg.hidden = true;
+				// Активируем кнопку "Забровнировать"
+				this.priceCalcForm.querySelector('.price-calc__btn').classList.remove('off');
+			}
+		} else {
+			// Прячем сообщение
+			this.errorMsg.hidden = true;
+			// Деактивируем кнопку "Забровнировать"
+			this.priceCalcForm.querySelector('.price-calc__btn').classList.remove('off');
+		}
+		// Выводим итоговую стоимость тура на страницу
+		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
+	},
 };
 
 
 
 document.addEventListener("DOMContentLoaded", function (e) {
-	// Берем всю форму калькулятора и добавляем в объект калькулятора
+	// Добавляем в объект калькулятора форму калькулятора
 	tourCalculator.priceCalcForm = document.querySelector('.price-calc__form');
-	// Берем список машин и добавляем в объект калькулятора
-	tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll('.checkbox.car');
-	// Берем колличество ходовых дней и добавляем в объект калькулятора
-	tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector('[data-run-days]').dataset.runDays;
-	// Добавляем стоимость тура в объект калькулятора
-	tourCalculator.tourPrice = tourCalculator.getNum('.js-tour-price');
+	if (tourCalculator.priceCalcForm) {
+		// Добавляем в объект калькулятора чекбоксы с машинами
+		tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll('.checkbox.car');
+		// Добавляем в объект калькулятора колличество ходовых дней
+		tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector('[data-run-days]').dataset.runDays;
+		// Добавляем в объект калькулятора стоимость тура 
+		tourCalculator.tourPrice = tourCalculator.getNum('.js-tour-price');
+		// Добавляем в объект калькулятора сообщение об ошибке, что не хватает мест в машинах
+		tourCalculator.errorMsg = document.querySelector('.total-cost__error-msg');
 
 
-	// Ставим слушатель изменений элементов форм в калькуляторе
-	tourCalculator.priceCalcForm.addEventListener('change', e => {
-		const target = e.target;
+		// Ставим слушатель изменений элементов форм в калькуляторе
+		tourCalculator.priceCalcForm.addEventListener('change', e => {
+			const target = e.target;
 
-		// Если клик на чекбокс "Аренда техники"
-		if (target.closest('.js-car-rent')) {
-			if (target.checked) {
-				tourCalculator.cars.forEach(item => {
-					item.querySelector('input').disabled = false;
-				});
-			} else {
-				tourCalculator.cars.forEach(item => {
-					item.querySelector('input').disabled = true;
-				});
+			// Если клик на чекбокс "Аренда техники"
+			if (target.closest('.js-car-rent')) {
+				if (target.checked) {
+					// Снимаем блокировку с чекбоксов
+					tourCalculator.cars.forEach((item) => {
+						item.querySelector('input').disabled = false;
+						// Возвращаем ранее выбранные машины в состояние checked
+						tourCalculator.checkedCars.forEach(id => {
+							id === item.querySelector('input').id ? item.querySelector('input').checked = true : null;
+						});
+					});
+
+					// Чистим массив 
+					tourCalculator.checkedCars = [];
+				} else {
+					// Блокируем выбор чекбокса
+					tourCalculator.cars.forEach(item => {
+						item.querySelector('input').disabled = true;
+
+						// Добавляем в массив выбранные машины
+						item.querySelector('input').checked ? tourCalculator.checkedCars.push(item.querySelector('input').id) : null;
+						item.querySelector('input').checked = false;
+					});
+				}
 			}
-		}
-		// // // Если клик на чекбокс "Своя техника"
-		// // if (target.closest('.js-own-cars')) {
-		// // 	tourCalculator.checkSeatsInCars(target);
-		// // }
-		// // // Если клик на чекбокс "Пассажир без управления"
-		// // if (target.closest('.js-passenger')) {
-		// // 	tourCalculator.checkSeatsInCars(target);
-		// // }
-		// tourCalculator.checkSeatsInCars(target);
+
+			// Если клик на чекбокс "Своя техника"
+			if (target.closest('.js-own-cars')) {
+				target.checked ? tourCalculator.ownCarsCheckbox = true : tourCalculator.ownCarsCheckbox = false;
+			}
+
+			// Если клик на чекбокс "Пассажир без управления"
+			if (target.closest('.js-passenger')) {
+				target.checked ? tourCalculator.passengerCheckbox.check = true : tourCalculator.passengerCheckbox.check = false;
+			}
 
 
-		// Устанавливаем стоимость аренда техники и итоговую стоимость после выбора
+
+			// Устанавливаем стоимость аренда техники и итоговую стоимость после выбора
+			tourCalculator.setTotalRentPrice('.js-total-rent-price');
+			tourCalculator.setTotalPrice('.js-total-price');
+		});
+
+		// Ставим слушатель на селекты выбора колличества участников
+		document.addEventListener("selectCallback", (e) => {
+			let target = e.detail.select;
+
+			// Добовляем в объект выбранное колличество взрослых
+			if (target.closest('.js-adults')) tourCalculator.adults = +target.value;
+			// Добовляем в объект выбранное колличество детей
+			if (target.closest('.js-children')) tourCalculator.children = +target.value;
+			// Добовляем в объект общее колличество участников
+			tourCalculator.tourists = tourCalculator.children + tourCalculator.adults;
+
+
+
+			// Устанавливаем цены в калькуляторе после выбора колличества участников
+			tourCalculator.setTotalTourPrice('.js-total-tour-price');
+			tourCalculator.setTotalPrice('.js-total-price');
+		});
+
+		// Устанавливаем цены в калькуляторе на момент создания страницы
 		tourCalculator.setTotalRentPrice('.js-total-rent-price');
-		tourCalculator.setTotalPrice('.js-total-price');
-	});
-
-	// Ставим слушатель на селекты выбора колличества участников
-	document.addEventListener("selectCallback", (e) => {
-		let target = e.detail.select;
-
-		// Добовляем в объект выбранное колличество взрослых
-		if (target.closest('.js-adults')) tourCalculator.adults = +target.value;
-		// Добовляем в объект выбранное колличество детей
-		if (target.closest('.js-children')) tourCalculator.children = +target.value;
-		// Добовляем в объект общее колличество участников
-		tourCalculator.tourists = tourCalculator.children + tourCalculator.adults;
-
-		// tourCalculator.checkSeatsInCars();
-
-
-		// Устанавливаем цены в калькуляторе после выбора колличества участников
 		tourCalculator.setTotalTourPrice('.js-total-tour-price');
 		tourCalculator.setTotalPrice('.js-total-price');
-	});
+		console.log(tourCalculator.cars);
 
-	// tourCalculator.checkSeatsInCars();
-
-
-	// Устанавливаем цены в калькуляторе на момент создания страницы
-	tourCalculator.setTotalRentPrice('.js-total-rent-price');
-	tourCalculator.setTotalTourPrice('.js-total-tour-price');
-	tourCalculator.setTotalPrice('.js-total-price');
-
-
+		//! Временное действие для теста
+		// Добавление ценников машин в чекбокс
+		tourCalculator.cars.forEach(car => {
+			car.querySelector('.car__descr').insertAdjacentHTML('beforeEnd', `<br>Цена: ${car.dataset.carPrice} ₽`);
+		});
+	}
 });
 
 //#endregion
-

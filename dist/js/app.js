@@ -3430,6 +3430,9 @@
                 }), 200);
             }));
         }
+        function getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
         function fullVHfix() {
             const fullScreens = document.querySelectorAll("[data-fullscreen]");
             if (fullScreens.length && isMobile.any()) {
@@ -3555,6 +3558,10 @@
                     document.documentElement.classList.toggle("menu-open");
                 }
             }));
+        }
+        function menuClose() {
+            bodyUnlock();
+            document.documentElement.classList.remove("menu-open");
         }
         function functions_FLS(message) {
             setTimeout((() => {
@@ -3806,6 +3813,35 @@
             }
         }
         modules_flsModules.popup = new Popup({});
+        let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+            const targetBlockElement = document.querySelector(targetBlock);
+            if (targetBlockElement) {
+                let headerItem = "";
+                let headerItemHeight = 0;
+                if (noHeader) {
+                    headerItem = "header.header";
+                    headerItemHeight = document.querySelector(headerItem).offsetHeight;
+                }
+                let options = {
+                    speedAsDuration: true,
+                    speed,
+                    header: headerItem,
+                    offset: offsetTop,
+                    easing: "easeOutQuad"
+                };
+                document.documentElement.classList.contains("menu-open") ? menuClose() : null;
+                if ("undefined" !== typeof SmoothScroll) (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                    let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+                    targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
+                    targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
+                    window.scrollTo({
+                        top: targetBlockElementPosition,
+                        behavior: "smooth"
+                    });
+                }
+                functions_FLS(`[gotoBlock]: Юхуу...едем к ${targetBlock}`);
+            } else functions_FLS(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${targetBlock}`);
+        };
         function formFieldsInit(options = {
             viewPass: false
         }) {
@@ -8042,6 +8078,44 @@
             use_native: true
         });
         let addWindowScrollEvent = false;
+        function pageNavigation() {
+            document.addEventListener("click", pageNavigationAction);
+            document.addEventListener("watcherCallback", pageNavigationAction);
+            function pageNavigationAction(e) {
+                if ("click" === e.type) {
+                    const targetElement = e.target;
+                    if (targetElement.closest("[data-goto]")) {
+                        const gotoLink = targetElement.closest("[data-goto]");
+                        const gotoLinkSelector = gotoLink.dataset.goto ? gotoLink.dataset.goto : "";
+                        const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
+                        const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
+                        const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+                        gotoblock_gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                        e.preventDefault();
+                    }
+                } else if ("watcherCallback" === e.type && e.detail) {
+                    const entry = e.detail.entry;
+                    const targetElement = entry.target;
+                    if ("navigator" === targetElement.dataset.watch) {
+                        document.querySelector(`[data-goto]._navigator-active`);
+                        let navigatorCurrentItem;
+                        if (targetElement.id && document.querySelector(`[data-goto="#${targetElement.id}"]`)) navigatorCurrentItem = document.querySelector(`[data-goto="#${targetElement.id}"]`); else if (targetElement.classList.length) for (let index = 0; index < targetElement.classList.length; index++) {
+                            const element = targetElement.classList[index];
+                            if (document.querySelector(`[data-goto=".${element}"]`)) {
+                                navigatorCurrentItem = document.querySelector(`[data-goto=".${element}"]`);
+                                break;
+                            }
+                        }
+                        if (entry.isIntersecting) navigatorCurrentItem ? navigatorCurrentItem.classList.add("_navigator-active") : null; else navigatorCurrentItem ? navigatorCurrentItem.classList.remove("_navigator-active") : null;
+                    }
+                }
+            }
+            if (getHash()) {
+                let goToHash;
+                if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
+                goToHash ? gotoblock_gotoBlock(goToHash, true, 500, 20) : null;
+            }
+        }
         function headerScroll() {
             addWindowScrollEvent = true;
             const header = document.querySelector("header.header");
@@ -12137,30 +12211,28 @@
         const fullScreenBlock = document.querySelector(".fullscreen-block");
         if (fullScreenBlock) document.querySelector(".header").classList.add("full-animation");
         let tourCalculator = {
-            tourPrice: 0,
             adults: 1,
             children: 0,
+            tourists: 1,
             runDays: 0,
+            ownCarsCheckbox: false,
+            passengerCheckbox: {
+                check: false,
+                price: 9e3
+            },
+            checkedCars: [],
+            tourPrice: 0,
             totalTourPrice: 0,
             totalRentPrice: 0,
             totalPrice: 0,
-            tourists: 1,
-            errorMsg: document.querySelector(".total-cost__error-msg"),
             getNum: function(selector) {
                 return +document.querySelector(selector).innerText.split("").filter((item => {
                     if (!isNaN(parseInt(item))) return item;
                 })).join("");
             },
+            formattedPrice: num => `${new Intl.NumberFormat("ru-RU").format(num)} ₽`,
             calcCostParticipation: function() {
                 return this.adults * this.tourPrice + this.children * (.3 * this.tourPrice);
-            },
-            setTotalTourPrice: function(selector) {
-                document.querySelector(selector).innerHTML = this.formattedPrice(this.calcCostParticipation());
-                this.totalTourPrice = this.calcCostParticipation();
-            },
-            formattedPrice: num => `${new Intl.NumberFormat("ru-RU").format(num)} ₽`,
-            setTotalPrice: function(selector) {
-                document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
             },
             getRentPrice: function() {
                 let price = 0;
@@ -12176,37 +12248,78 @@
                 }));
                 return places;
             },
+            setTotalTourPrice: function(selector) {
+                this.totalTourPrice = this.calcCostParticipation();
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.totalTourPrice);
+            },
             setTotalRentPrice: function(selector) {
-                document.querySelector(selector).innerHTML = this.formattedPrice(this.getRentPrice() * this.runDays);
+                if (this.passengerCheckbox.check) {
+                    this.totalRentPrice = (this.getRentPrice() + this.passengerCheckbox.price) * this.runDays;
+                    document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice);
+                    return;
+                }
                 this.totalRentPrice = this.getRentPrice() * this.runDays;
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice);
+            },
+            setTotalPrice: function(selector) {
+                if (this.getCarPlaces() < this.tourists) {
+                    this.errorMsg.hidden = false;
+                    this.priceCalcForm.querySelector(".price-calc__btn").classList.add("off");
+                    if (this.ownCarsCheckbox || this.passengerCheckbox.check) {
+                        this.errorMsg.hidden = true;
+                        this.priceCalcForm.querySelector(".price-calc__btn").classList.remove("off");
+                    }
+                } else {
+                    this.errorMsg.hidden = true;
+                    this.priceCalcForm.querySelector(".price-calc__btn").classList.remove("off");
+                }
+                document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
             }
         };
         document.addEventListener("DOMContentLoaded", (function(e) {
             tourCalculator.priceCalcForm = document.querySelector(".price-calc__form");
-            tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll(".checkbox.car");
-            tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector("[data-run-days]").dataset.runDays;
-            tourCalculator.tourPrice = tourCalculator.getNum(".js-tour-price");
-            tourCalculator.priceCalcForm.addEventListener("change", (e => {
-                const target = e.target;
-                if (target.closest(".js-car-rent")) if (target.checked) tourCalculator.cars.forEach((item => {
-                    item.querySelector("input").disabled = false;
-                })); else tourCalculator.cars.forEach((item => {
-                    item.querySelector("input").disabled = true;
+            if (tourCalculator.priceCalcForm) {
+                tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll(".checkbox.car");
+                tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector("[data-run-days]").dataset.runDays;
+                tourCalculator.tourPrice = tourCalculator.getNum(".js-tour-price");
+                tourCalculator.errorMsg = document.querySelector(".total-cost__error-msg");
+                tourCalculator.priceCalcForm.addEventListener("change", (e => {
+                    const target = e.target;
+                    if (target.closest(".js-car-rent")) if (target.checked) {
+                        tourCalculator.cars.forEach((item => {
+                            item.querySelector("input").disabled = false;
+                            tourCalculator.checkedCars.forEach((id => {
+                                id === item.querySelector("input").id ? item.querySelector("input").checked = true : null;
+                            }));
+                        }));
+                        tourCalculator.checkedCars = [];
+                    } else tourCalculator.cars.forEach((item => {
+                        item.querySelector("input").disabled = true;
+                        item.querySelector("input").checked ? tourCalculator.checkedCars.push(item.querySelector("input").id) : null;
+                        item.querySelector("input").checked = false;
+                    }));
+                    if (target.closest(".js-own-cars")) target.checked ? tourCalculator.ownCarsCheckbox = true : tourCalculator.ownCarsCheckbox = false;
+                    if (target.closest(".js-passenger")) target.checked ? tourCalculator.passengerCheckbox.check = true : tourCalculator.passengerCheckbox.check = false;
+                    tourCalculator.setTotalRentPrice(".js-total-rent-price");
+                    tourCalculator.setTotalPrice(".js-total-price");
+                }));
+                document.addEventListener("selectCallback", (e => {
+                    let target = e.detail.select;
+                    if (target.closest(".js-adults")) tourCalculator.adults = +target.value;
+                    if (target.closest(".js-children")) tourCalculator.children = +target.value;
+                    tourCalculator.tourists = tourCalculator.children + tourCalculator.adults;
+                    tourCalculator.setTotalTourPrice(".js-total-tour-price");
+                    tourCalculator.setTotalPrice(".js-total-price");
                 }));
                 tourCalculator.setTotalRentPrice(".js-total-rent-price");
-                tourCalculator.setTotalPrice(".js-total-price");
-            }));
-            document.addEventListener("selectCallback", (e => {
-                let target = e.detail.select;
-                if (target.closest(".js-adults")) tourCalculator.adults = +target.value;
-                if (target.closest(".js-children")) tourCalculator.children = +target.value;
-                tourCalculator.tourists = tourCalculator.children + tourCalculator.adults;
                 tourCalculator.setTotalTourPrice(".js-total-tour-price");
                 tourCalculator.setTotalPrice(".js-total-price");
-            }));
-            tourCalculator.setTotalRentPrice(".js-total-rent-price");
-            tourCalculator.setTotalTourPrice(".js-total-tour-price");
-            tourCalculator.setTotalPrice(".js-total-price");
+                console.log(tourCalculator.cars);
+                //! Временное действие для теста
+                                tourCalculator.cars.forEach((car => {
+                    car.querySelector(".car__descr").insertAdjacentHTML("beforeEnd", `<br>Цена: ${car.dataset.carPrice} ₽`);
+                }));
+            }
         }));
         window["FLS"] = false;
         isWebp();
@@ -12216,6 +12329,7 @@
         formFieldsInit({
             viewPass: false
         });
+        pageNavigation();
         headerScroll();
     })();
 })();
