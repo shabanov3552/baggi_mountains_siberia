@@ -201,7 +201,7 @@ let tourCalculator = {
 
 	// Считает цену стоимости участия за всех участников тура
 	calcCostParticipation: function () {
-		return this.adults * this.tourPrice + this.children * (this.tourPrice * 0.3);
+		return this.adults * this.tourPrice + this.children * (this.tourPrice * 0.7);
 	},
 
 	// Считает общую стоимость аренды выбраных машин
@@ -281,6 +281,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	// Добавляем в объект калькулятора форму калькулятора
 	tourCalculator.priceCalcForm = document.querySelector('.price-calc__form');
 	if (tourCalculator.priceCalcForm) {
+		console.log('qwe');
 		// Добавляем в объект калькулятора чекбоксы с машинами
 		tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll('.checkbox.car');
 		// Добавляем в объект калькулятора колличество ходовых дней

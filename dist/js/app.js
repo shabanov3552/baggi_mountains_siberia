@@ -12232,7 +12232,7 @@
             },
             formattedPrice: num => `${new Intl.NumberFormat("ru-RU").format(num)} ₽`,
             calcCostParticipation: function() {
-                return this.adults * this.tourPrice + this.children * (.3 * this.tourPrice);
+                return this.adults * this.tourPrice + this.children * (.7 * this.tourPrice);
             },
             getRentPrice: function() {
                 let price = 0;
@@ -12279,6 +12279,7 @@
         document.addEventListener("DOMContentLoaded", (function(e) {
             tourCalculator.priceCalcForm = document.querySelector(".price-calc__form");
             if (tourCalculator.priceCalcForm) {
+                console.log("qwe");
                 tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll(".checkbox.car");
                 tourCalculator.runDays = +tourCalculator.priceCalcForm.querySelector("[data-run-days]").dataset.runDays;
                 tourCalculator.tourPrice = tourCalculator.getNum(".js-tour-price");

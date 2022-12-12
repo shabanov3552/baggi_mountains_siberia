@@ -1058,6 +1058,7 @@
 		border-radius: 10px;
 		padding: rem(13);
 		transition: all 0.3s ease 0s;
+		row-gap: 10px;
 
 		&::after {
 			content: '';
