@@ -130,36 +130,26 @@ if (fullScreenBlock) {
 
 //#region hover картинок туров в списке туров
 
-// if (document.querySelector('.tours')) {
-// 	copyTourImages();
+if (document.querySelector('.tours')) {
+	const toursCards = document.querySelectorAll('.tours__content');
+	toursCards.forEach(card => {
+		card.addEventListener("mouseenter", animationTourCard);
+		card.addEventListener("mouseleave", animationTourCard);
+	});
+}
 
-// 	const toursCards = document.querySelectorAll('.tours__content');
-// 	toursCards.forEach(card => {
-// 		card.addEventListener("mouseenter", animationTourCard);
-// 	});
-// }
+function animationTourCard(e) {
+	const target = e.target;
+	const type = e.type;
+	const targetImg = target.parentElement.querySelector('.tours__image');
 
-// function copyTourImages() {
-// 	const toursImages = document.querySelectorAll('.tours__image');
-
-// 	toursImages.forEach(item => {
-// 		var imageCopy = item.querySelector('img').cloneNode();
-// 		imageCopy.setAttribute('class', 'img-copy');
-// 		item.append(imageCopy);
-// 	});
-// }
-
-// function animationTourCard(e) {
-// 	const target = e.target;
-// 	const targetImg = target.parentElement.querySelector('.tours__image');
-// 	if (!targetImg.classList.contains('hover-anim')) {
-
-// 		targetImg.classList.add('hover-anim');
-// 		setTimeout(() => {
-// 			targetImg.classList.remove('hover-anim');
-// 		}, 550);
-// 	}
-// }
+	if (type === 'mouseenter') {
+		targetImg.classList.add('hover-anim');
+	}
+	if (type === 'mouseleave') {
+		targetImg.classList.remove('hover-anim');
+	}
+}
 
 //#endregion
 

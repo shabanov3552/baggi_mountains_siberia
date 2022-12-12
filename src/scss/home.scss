@@ -657,6 +657,7 @@
 			width: 115%;
 			height: 100%;
 			object-fit: cover;
+			transition: transform 0.3s ease 0s;
 
 			@media (max-width: $tablet) {
 				width: 100%;
@@ -667,34 +668,10 @@
 			margin: 0px 0px 40px 0px;
 		}
 
-		.img-copy {
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			opacity: 0;
-			object-fit: contain;
-		}
-
 		&.hover-anim {
-			.img-copy {
-				animation: hoverAnim .5s;
+			img {
+				transform: scale(1.1);
 			}
-		}
-	}
-
-	@keyframes hoverAnim {
-		0% {
-			opacity: 0.9;
-		}
-
-		100% {
-			top: -110px;
-			left: -80px;
-			width: 135%;
-			height: 135%;
-			opacity: 0;
 		}
 	}
 

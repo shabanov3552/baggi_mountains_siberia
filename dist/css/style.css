@@ -2088,50 +2088,17 @@ body::after {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: -webkit-transform 0.3s ease 0s;
+  transition: -webkit-transform 0.3s ease 0s;
+  -o-transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s;
+  transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
 }
 
-.tours__image .img-copy {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.tours__image.hover-anim .img-copy {
-  -webkit-animation: hoverAnim 0.5s;
-          animation: hoverAnim 0.5s;
-}
-
-@-webkit-keyframes hoverAnim {
-  0% {
-    opacity: 0.9;
-  }
-
-  100% {
-    top: -110px;
-    left: -80px;
-    width: 135%;
-    height: 135%;
-    opacity: 0;
-  }
-}
-
-@keyframes hoverAnim {
-  0% {
-    opacity: 0.9;
-  }
-
-  100% {
-    top: -110px;
-    left: -80px;
-    width: 135%;
-    height: 135%;
-    opacity: 0;
-  }
+.tours__image.hover-anim img {
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 @-webkit-keyframes hvr-ripple-out {
