@@ -241,6 +241,7 @@ let tourCalculator = {
 
 	// Устанавливает итоговую цену на странице
 	setTotalPrice: function (selector) {
+		this.totalPrice = this.totalRentPrice + this.totalTourPrice;
 		// Проверяем хватает ли мест в машинах всем участникам
 		if (this.getCarPlaces() < this.tourists) {
 			// Если не хватает выводим об этом сообщение
@@ -252,26 +253,25 @@ let tourCalculator = {
 				this.errorMsg.hidden = true;
 				// Активируем кнопку "Забровнировать"
 				this.priceCalcForm.querySelector('.price-calc__btn').classList.remove('off');
+				addDataInFormReserv(this);
 			}
 		} else {
 			// Прячем сообщение
 			this.errorMsg.hidden = true;
-			// Деактивируем кнопку "Забровнировать"
+			// Активируем кнопку "Забровнировать"
 			this.priceCalcForm.querySelector('.price-calc__btn').classList.remove('off');
+			addDataInFormReserv(this);
 		}
 		// Выводим итоговую стоимость тура на страницу
-		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalRentPrice + this.totalTourPrice);
+		document.querySelector(selector).innerHTML = this.formattedPrice(this.totalPrice);
 	},
 };
-
-
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
 	// Добавляем в объект калькулятора форму калькулятора
 	tourCalculator.priceCalcForm = document.querySelector('.price-calc__form');
 	if (tourCalculator.priceCalcForm) {
-		console.log('qwe');
 		// Добавляем в объект калькулятора чекбоксы с машинами
 		tourCalculator.cars = tourCalculator.priceCalcForm.querySelectorAll('.checkbox.car');
 		// Добавляем в объект калькулятора колличество ходовых дней
@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 		tourCalculator.setTotalTourPrice('.js-total-tour-price');
 		tourCalculator.setTotalPrice('.js-total-price');
 
-		//! Временное действие для теста
+		//! Временное действие для теста возможно останется
 		// Добавление ценников машин в чекбокс
 		tourCalculator.cars.forEach(car => {
 			car.querySelector('.car__descr').insertAdjacentHTML('beforeEnd', `<br>Цена: ${car.dataset.carPrice} ₽`);
@@ -360,4 +360,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
 	}
 });
 
+
+function addDataInFormReserv(obj) {
+	let carsName = [];
+	Array.from(obj.cars).filter((e) => {
+		if (e.querySelector('input:checked')) {
+			return e;
+		}
+	}).forEach((e => { carsName.push(e.querySelector('.checkbox__text').innerText); }));
+
+	document.querySelector("#js-adults_size").value = `${obj.adults}`;
+	document.querySelector("#js-children_size").value = `${obj.children}`;
+	document.querySelector("#js-cars").value = `${carsName.join(', ')}`;
+	document.querySelector("#js-your-cars").value = `${obj.ownCarsCheckbox ? "да" : "нет"}`;
+	document.querySelector("#js-passagers").value = `${obj.passengerCheckbox.check ? "да" : "нет"}`;
+	document.querySelector("#js-price_days").value = `${obj.totalTourPrice}`;
+	document.querySelector("#js-price_tex").value = `${obj.totalRentPrice}`;
+	document.querySelector("#js-price_total").value = `${obj.totalPrice}`;
+}
 //#endregion
