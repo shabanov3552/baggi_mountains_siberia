@@ -738,7 +738,11 @@
 
 	// .tours__col
 
-	&__col {}
+	&__col {
+		@media (min-width:$mobileSmall) {
+			min-width: 350px;
+		}
+	}
 
 	// .tours__title
 

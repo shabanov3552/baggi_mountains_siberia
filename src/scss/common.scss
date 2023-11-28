@@ -481,3 +481,9 @@
 		transform: translate(-5px, 0px);
 	}
 }
+
+.select-dates {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}

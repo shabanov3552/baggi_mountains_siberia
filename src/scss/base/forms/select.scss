@@ -17,6 +17,13 @@
 		cursor: pointer;
 		width: 100%;
 		border-radius: 4px;
+
+		.select_date-select & {
+			border-radius: 10px;
+			border: 1px solid #5E7DA3;
+			background: transparent;
+			color: #fff;
+		}
 	}
 
 	// .select__value
@@ -26,6 +33,33 @@
 		height: rem(30);
 		padding: 0 rem(15);
 		gap: rem(10);
+
+		.select_date-select & {
+			height: rem(57);
+			font-size: 24px;
+			font-weight: 400;
+
+			@media (max-width:$mobileSmall) {
+				font-size: 16px;
+			}
+
+			.select__label {
+				color: rgba(255, 255, 255, 0.50);
+				font-size: 15px;
+				font-weight: 600;
+				line-height: normal;
+				flex: none;
+
+				@media (max-width:$mobileSmall) {
+					font-size: 12px;
+				}
+			}
+
+			&::after {
+				background: url(../img/sel-arr-dwn.svg) 100%/contain no-repeat;
+				flex: 0 0 12px;
+			}
+		}
 
 		>* {
 			flex: 1 1 auto;
@@ -77,6 +111,22 @@
 		border: 1px solid #d9d9d9;
 		border-top: 0;
 		padding: 10px 0px 5px 0px;
+
+		.select_date-select & {
+			top: calc(100% + 14px);
+			border-radius: 10px;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: -7px;
+				left: 50%;
+				width: 16px;
+				height: 16px;
+				background-color: #fff;
+				transform: rotate(45deg);
+			}
+		}
 	}
 
 	// .select__scroll
@@ -110,6 +160,14 @@
 		@media (any-hover: hover) {
 			&:hover {
 				background: #d9d9d9;
+
+				.select_date-select & {
+					background: none;
+
+					.select__text {
+						color: #F64478;
+					}
+				}
 			}
 		}
 	}
@@ -118,11 +176,50 @@
 	&__row {
 		display: inline-flex;
 		align-items: center;
+
+		.select_date-select & {
+			display: grid;
+			grid-template-columns: 230px 1fr;
+			gap: 23px;
+
+			@media (max-width:$tablet) {
+				grid-template-columns: minmax(230px, 1fr) 110px;
+			}
+
+			@media (max-width:$mobileSmall) {
+				grid-template-columns: 1fr;
+				gap: 1px;
+			}
+		}
 	}
 
-	&__asset {}
+	&__asset {
+		font-size: 15px;
+		font-weight: 600;
+		color: #797E84;
 
-	&__text {}
+		.no-place & {
+			color: #FF7C7C;
+		}
+	}
+
+	&__text {
+		color: #0086CF;
+		font-family: Montserrat;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 45px;
+
+		@media (max-width:$mobileSmall) {
+			font-size: 14px;
+			line-height: normal;
+		}
+
+		.select__title & {
+			color: #fff;
+		}
+	}
 
 	// Состояния селекта
 	&._select-open {

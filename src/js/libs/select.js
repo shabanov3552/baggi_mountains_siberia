@@ -140,21 +140,21 @@ class SelectConstructor {
 		// Присваиваем уникальный ID
 		index ? originalSelect.dataset.id = index : null;
 
+
+		// Конструктор основных элементов
+		selectItem.insertAdjacentHTML('beforeend', `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`);
+		// Запускаем конструктор псевдоселекта
+		this.selectBuild(originalSelect);
 		// Работа с плейсхолдером
 		if (this.getSelectPlaceholder(originalSelect)) {
 			// Запоминаем плейсхолдер
 			originalSelect.dataset.placeholder = this.getSelectPlaceholder(originalSelect).value;
 			// Если включен режим label
 			if (this.getSelectPlaceholder(originalSelect).label.show) {
-				const selectItemTitle = this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement;
-				selectItemTitle.insertAdjacentHTML('afterbegin', `<span class="${this.selectClasses.classSelectLabel}">${this.getSelectPlaceholder(originalSelect).label.text ? this.getSelectPlaceholder(originalSelect).label.text : this.getSelectPlaceholder(originalSelect).value}</span>`);
+				const selectItemTitle = this.getSelectElement(selectItem, this.selectClasses.classSelectContent).selectElement;
+				selectItemTitle.insertAdjacentHTML('afterend', `<span class="${this.selectClasses.classSelectLabel}">${this.getSelectPlaceholder(originalSelect).label.text ? this.getSelectPlaceholder(originalSelect).label.text : this.getSelectPlaceholder(originalSelect).value}</span>`);
 			}
 		}
-		// Конструктор основных элементов
-		selectItem.insertAdjacentHTML('beforeend', `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`);
-		// Запускаем конструктор псевдоселекта
-		this.selectBuild(originalSelect);
-
 		// Запоминаем скорость
 		originalSelect.dataset.speed = originalSelect.dataset.speed ? originalSelect.dataset.speed : "150";
 		// Событие при изменении оригинального select
@@ -304,11 +304,11 @@ class SelectConstructor {
 		const selectOptionDataHTML = selectOptionData.indexOf('img') >= 0 ? `<img src="${selectOptionData}" alt="">` : selectOptionData;
 		let selectOptionContentHTML = ``;
 		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectRow}">` : '';
-		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectData}">` : '';
-		selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : '';
-		selectOptionContentHTML += selectOptionData ? `</span>` : '';
 		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectText}">` : '';
 		selectOptionContentHTML += selectOption.textContent;
+		selectOptionContentHTML += selectOptionData ? `</span>` : '';
+		selectOptionContentHTML += selectOptionData ? `<span class="${this.selectClasses.classSelectData}">` : '';
+		selectOptionContentHTML += selectOptionData ? selectOptionDataHTML : '';
 		selectOptionContentHTML += selectOptionData ? `</span>` : '';
 		selectOptionContentHTML += selectOptionData ? `</span>` : '';
 		return selectOptionContentHTML;

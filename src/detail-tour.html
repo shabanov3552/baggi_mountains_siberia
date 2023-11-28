@@ -32,74 +32,95 @@
 							</div>
 						</div>
 						<div class="info-block__col">
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_1"></use>
-									</svg>
-								</div>
-								<div class="info-block__row-name">Уровень сложности</div>
-								<div class="info-block__row-value">Легкий</div>
+							<div class="select-dates" data-one-select>
+								<select data-class-modif="date-select">
+									<option value="" data-label="Выбрать дату">Июль 2024</option>
+									<option value="02 – 07 июля 2024" data-asset="Мест нет" data-class="no-place">02 – 07 июля 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
+									<option value="10 – 15 июля 2024" data-asset="Одно место">10 – 15 июля 2024</option>
+									<option value="18 – 23 июля 2024" data-asset="Есть места">18 – 23 июля 2024</option>
+								</select>
+								<select data-class-modif="date-select">
+									<option value="" data-label="Выбрать дату">Август 2024</option>
+									<option value="02 – 07 августа 2024" data-asset="Мест нет" data-class="no-place">02 – 07 августа 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
+									<option value="10 – 15 августа 2024" data-asset="Одно место">10 – 15 августа 2024</option>
+									<option value="18 – 23 августа 2024" data-asset="Есть места">18 – 23 августа 2024</option>
+								</select>
+								<select data-class-modif="date-select">
+									<option value="" data-label="Выбрать дату">Сентябрь 2024</option>
+									<option value="1" data-asset="Мест нет" data-class="no-place">02 – 07 сентября 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
+									<option value="2" data-asset="Одно место">10 – 15 сентября 2024</option>
+									<option value="3" data-asset="Есть места">18 – 23 сентября 2024</option>
+								</select>
 							</div>
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_2"></use>
-									</svg>
+							<div class="info-block__features">
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_1"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Уровень сложности</div>
+									<div class="info-block__row-value">Легкий</div>
 								</div>
-								<div class="info-block__row-name">Длительность</div>
-								<div class="info-block__row-value">5 дней</div>
-							</div>
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_3"></use>
-									</svg>
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_2"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Длительность</div>
+									<div class="info-block__row-value">5 дней</div>
 								</div>
-								<div class="info-block__row-name">Пробег</div>
-								<div class="info-block__row-value">400 км</div>
-							</div>
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_4"></use>
-									</svg>
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_3"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Пробег</div>
+									<div class="info-block__row-value">400 км</div>
 								</div>
-								<div class="info-block__row-name">Транспорт</div>
-								<div class="info-block__row-value">Багги</div>
-							</div>
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_5"></use>
-									</svg>
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_4"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Транспорт</div>
+									<div class="info-block__row-value">Багги</div>
 								</div>
-								<div class="info-block__row-name">Проживание</div>
-								<div class="info-block__row-value">Комфорт</div>
-							</div>
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_6"></use>
-									</svg>
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_5"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Проживание</div>
+									<div class="info-block__row-value">Комфорт</div>
 								</div>
-								<div class="info-block__row-name">Старт</div>
-								<div class="info-block__row-value">Горно-Алтайск</div>
-							</div>
-							<!-- последним должен быть блок с ценой всгда -->
-							<div class="info-block__row-in">
-								<div class="info-block__icon">
-									<svg class="info-block__icon-svg">
-										<use xlink:href="@img/icons/icons.svg#svg-icon_detail_7"></use>
-									</svg>
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_6"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Старт</div>
+									<div class="info-block__row-value">Горно-Алтайск</div>
 								</div>
-								<div class="info-block__row-name">Стоимость</div>
-								<!-- js-tour-price отсюда берется стоимость тура для калькулятора -->
-								<div class="info-block__row-value js-tour-price">от 50 000 ₽</div>
+								<!-- последним должен быть блок с ценой всгда -->
+								<div class="info-block__row-in">
+									<div class="info-block__icon">
+										<svg class="info-block__icon-svg">
+											<use xlink:href="@img/icons/icons.svg#svg-icon_detail_7"></use>
+										</svg>
+									</div>
+									<div class="info-block__row-name">Стоимость</div>
+									<!-- js-tour-price отсюда берется стоимость тура для калькулятора -->
+									<div class="info-block__row-value js-tour-price">от 50 000 ₽</div>
+								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<div class="price-calc">
@@ -107,6 +128,22 @@
 					<form action="" class="price-calc__form">
 						<div class="price-calc__top">
 							<div class="price-calc__title">Расчет стоимости</div>
+							<div class="price-calc__dates">
+								<div class="travel-dates">
+									<span class="travel-dates__sel-title">Даты поездки</span>
+									<div class="travel-dates__row">
+										<label class="travel-dates__label">
+											<select name="form[]">
+												<option value="29 – 04 июля 2024" selected>29 – 04 июля 2024</option>
+												<option value="18 – 23 июля 2024">18 – 23 июля 2024</option>
+												<option value="10 – 15 июля 2024">10 – 15 июля 2024</option>
+												<option value="02 – 07 июля 2024">02 – 07 июля 2024</option>
+											</select>
+										</label>
+										<div class="travel-dates__num-seats">Осталось одно место</div>
+									</div>
+								</div>
+							</div>
 							<div class="price-calc__cost">
 								<div class="cost-tour">
 									<div class="cost-tour__row">

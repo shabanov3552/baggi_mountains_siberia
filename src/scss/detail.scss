@@ -97,7 +97,7 @@
 
 		&:last-child {
 			flex: 0 0 405px;
-			row-gap: 25px;
+			row-gap: 46px;
 			@include adaptiveValue("padding-top", 58, 0, 1920, 1000, 1);
 		}
 
@@ -105,6 +105,18 @@
 			&:last-child {
 				row-gap: 22px;
 			}
+		}
+	}
+
+	// .info-block__features
+
+	&__features {
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
+
+		@media (max-width: em(1200)) {
+			row-gap: 22px;
 		}
 	}
 
@@ -295,6 +307,14 @@
 			flex: 1 1 100%;
 			padding-left: 44px;
 		}
+	}
+
+	.select__body {
+		width: 100%;
+	}
+
+	.select__title {
+		font-size: 16px;
 	}
 }
 
@@ -692,10 +712,57 @@
 	}
 }
 
+.travel-dates {
+
+	// .travel-dates__row
+
+	&__row {
+		display: grid;
+		grid-template-columns: 540px 1fr;
+		align-items: center;
+		gap: 37px;
+
+		@media (max-width:$tablet) {
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
+	}
+
+	// .travel-dates__label
+
+	&__label {}
+
+	// .travel-dates__sel-title
+
+	&__sel-title {
+		font-weight: 600;
+		font-size: 17px;
+		line-height: 21px;
+		margin-bottom: rem(14);
+		display: inline-block;
+	}
+
+	// .travel-dates__num-seats
+
+	&__num-seats {
+		color: #FFF;
+		font-family: Montserrat;
+		font-size: 17px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: normal;
+	}
+}
+
+.js-travel-dates {}
+
+.js-num-seats {}
+
 
 //========================================================================================================================================================
 
 .price-calc .select {
+
 	// ._select-active
 
 	&_select-active {}
@@ -783,6 +850,16 @@
 
 		@media (max-width:$mobile) {
 			padding: 25px 10px;
+		}
+	}
+
+	// .price-calc__dates
+
+	&__dates {
+		margin-bottom: rem(25);
+
+		@media (max-width:$tablet) {
+			margin-bottom: rem(35);
 		}
 	}
 
