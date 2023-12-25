@@ -4270,7 +4270,8 @@
             selectCallback(selectItem, originalSelect) {
                 document.dispatchEvent(new CustomEvent("selectCallback", {
                     detail: {
-                        select: originalSelect
+                        select: originalSelect,
+                        item: selectItem
                     }
                 }));
             }
@@ -12338,22 +12339,46 @@
             }
         }));
         function addDataInFormReserv(obj) {
+            const date = document.querySelector(".travel-dates select").value;
             let carsName = [];
             Array.from(obj.cars).filter((e => {
                 if (e.querySelector("input:checked")) return e;
             })).forEach((e => {
                 carsName.push(e.querySelector(".checkbox__text").innerText);
             }));
-            document.querySelector("#js-adults_size").value = `${obj.adults}`;
-            document.querySelector("#js-children_size").value = `${obj.children}`;
-            document.querySelector("#js-cars").value = `${carsName.join(", ")}`;
-            document.querySelector("#js-your-cars").value = `${obj.ownCarsCheckbox ? "да" : "нет"}`;
-            document.querySelector("#js-passagers").value = `${obj.passengerCheckbox.check ? "да" : "нет"}`;
-            document.querySelector("#js-price_days").value = `${obj.totalTourPrice}`;
-            document.querySelector("#js-price_tex").value = `${obj.totalRentPrice}`;
-            document.querySelector("#js-price_total").value = `${obj.totalPrice}`;
+            $("#js-adults_size").attr("value", `${obj.adults}`);
+            $("#js-children_size").attr("value", `${obj.children}`);
+            $("#js-cars").attr("value", `${carsName.join(", ")}`);
+            $("#js-your-cars").attr("value", `${obj.ownCarsCheckbox ? "да" : "нет"}`);
+            $("#js-passagers").attr("value", `${obj.passengerCheckbox.check ? "да" : "нет"}`);
+            $("#js-price_days").attr("value", `${obj.totalTourPrice}`);
+            $("#js-price_tex").attr("value", `${obj.totalRentPrice}`);
+            $("#js-price_total").attr("value", `${obj.totalPrice}`);
+            $("#js-data_bron").attr("value", `${date}`);
         }
-        window["FLS"] = false;
+        document.addEventListener("selectCallback", (function(e) {
+            const currentSelect = e.detail.select;
+            const pseudoSelect = e.detail.item;
+            if (currentSelect.closest(".travel-dates")) {
+                $("#js-data_bron").attr("value", `${currentSelect.value}`);
+                if (pseudoSelect.querySelector(".select__title .select__asset")) document.querySelector(".travel-dates__num-seats").innerText = pseudoSelect.querySelector(".select__title .select__asset").textContent; else document.querySelector(".travel-dates__num-seats").innerText = "";
+            }
+            if (currentSelect.closest(".select-dates")) {
+                let selects = document.querySelectorAll(".select-dates select");
+                for (let i = 0; i < selects.length; i++) {
+                    const select = selects[i];
+                    if (currentSelect != select) select.parentElement.querySelector(".select__value").innerHTML = `\n\t\t\t\t<span class="select__content">${select.options[0].innerText}</span>\n\t\t\t\t<span class="select__label">${select.options[0].dataset.label}</span>`;
+                }
+                let travelDateSelect = document.querySelector(".travel-dates select");
+                if (travelDateSelect) {
+                    for (var i = 0; i < travelDateSelect.options.length; i++) if (travelDateSelect.options[i].value == currentSelect.value) travelDateSelect.options[i].selected = true;
+                    modules_flsModules.select.setSelectTitleValue(travelDateSelect.parentElement, travelDateSelect);
+                    modules_flsModules.select.setOptions(travelDateSelect.parentElement, travelDateSelect);
+                    modules_flsModules.select.setSelectChange(travelDateSelect);
+                }
+            }
+        }));
+        window["FLS"] = true;
         isWebp();
         addLoadedClass();
         menuInit();

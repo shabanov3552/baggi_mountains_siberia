@@ -416,7 +416,7 @@ textarea::-webkit-scrollbar {
 
 .select_date-select .select__value {
   height: 3.5625rem;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 400;
 }
 
@@ -535,6 +535,15 @@ textarea::-webkit-scrollbar {
   color: inherit;
 }
 
+.select_date-select .select__option {
+  color: #0086CF;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 45px;
+}
+
 .select__option._select-selected {
   background-color: #eee;
 }
@@ -556,6 +565,13 @@ textarea::-webkit-scrollbar {
   gap: 23px;
 }
 
+.travel-dates .select__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 150px;
+  grid-template-columns: 1fr 150px;
+}
+
 .select__asset {
   font-size: 15px;
   font-weight: 600;
@@ -566,10 +582,10 @@ textarea::-webkit-scrollbar {
   color: #FF7C7C;
 }
 
-.select__text {
+.select_date-select .select__text {
   color: #0086CF;
   font-family: Montserrat;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 45px;
@@ -577,6 +593,10 @@ textarea::-webkit-scrollbar {
 
 .select__title .select__text {
   color: #fff;
+}
+
+.travel-dates .select__asset {
+  display: none;
 }
 
 .select._select-open {
@@ -2164,7 +2184,7 @@ body::after {
 }
 
 .tours__row:not(:last-child) {
-  margin: 0px 0px 50px 0px;
+  margin: 0px 0px 150px 0px;
 }
 
 .tours__image {
@@ -3560,7 +3580,7 @@ body::after {
           appearance: none;
   max-width: 1380px;
   border-radius: 20px;
-  padding: 0;
+  padding: 0 !important;
   background: rgba(255, 255, 255, 0.0329129);
 }
 
@@ -7314,13 +7334,18 @@ body:not(.is-using-mouse) .fancybox__container :focus {
     font-size: 12px;
   }
 
+  .select_date-select .select__option {
+    font-size: 14px;
+    line-height: normal;
+  }
+
   .select_date-select .select__row {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     gap: 1px;
   }
 
-  .select__text {
+  .select_date-select .select__text {
     font-size: 14px;
     line-height: normal;
   }
@@ -7677,6 +7702,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
   .select_date-select .select__option:hover {
     background: none;
+    color: #F64478;
   }
 
   .select_date-select .select__option:hover .select__text {

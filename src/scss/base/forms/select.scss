@@ -36,7 +36,7 @@
 
 		.select_date-select & {
 			height: rem(57);
-			font-size: 24px;
+			font-size: 18px;
 			font-weight: 400;
 
 			@media (max-width:$mobileSmall) {
@@ -153,6 +153,20 @@
 		padding: 5px 15px;
 		color: inherit;
 
+		.select_date-select & {
+			color: #0086CF;
+			font-family: Montserrat;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 45px;
+
+			@media (max-width:$mobileSmall) {
+				font-size: 14px;
+				line-height: normal;
+			}
+		}
+
 		&._select-selected {
 			background-color: #eee;
 		}
@@ -163,6 +177,7 @@
 
 				.select_date-select & {
 					background: none;
+					color: #F64478;
 
 					.select__text {
 						color: #F64478;
@@ -191,6 +206,11 @@
 				gap: 1px;
 			}
 		}
+
+		.travel-dates & {
+			display: grid;
+			grid-template-columns: 1fr 150px;
+		}
 	}
 
 	&__asset {
@@ -204,20 +224,28 @@
 	}
 
 	&__text {
-		color: #0086CF;
-		font-family: Montserrat;
-		font-size: 20px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 45px;
+		.select_date-select & {
+			color: #0086CF;
+			font-family: Montserrat;
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 45px;
 
-		@media (max-width:$mobileSmall) {
-			font-size: 14px;
-			line-height: normal;
+			@media (max-width:$mobileSmall) {
+				font-size: 14px;
+				line-height: normal;
+			}
 		}
 
 		.select__title & {
 			color: #fff;
+		}
+	}
+
+	&__asset {
+		.travel-dates & {
+			display: none;
 		}
 	}
 

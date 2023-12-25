@@ -34,25 +34,27 @@
 						<div class="info-block__col">
 							<div class="select-dates" data-one-select>
 								<select data-class-modif="date-select">
-									<option value="" data-label="Выбрать дату">Июль 2024</option>
-									<option value="02 – 07 июля 2024" data-asset="Мест нет" data-class="no-place">02 – 07 июля 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
-									<option value="10 – 15 июля 2024" data-asset="Одно место">10 – 15 июля 2024</option>
-									<option value="18 – 23 июля 2024" data-asset="Есть места">18 – 23 июля 2024</option>
+									<option value="" data-label="Выбрать дату">июля 2024</option>
+									<option value="29 – 04 июля 2024" data-asset="Есть места">29 апреля – 04 мая 2024</option>
+									<option value="07 – 12 июля 2024" data-asset="Есть места">07 – 12 июля 2024</option>
+									<option value="15 – 20 июля 2024" data-asset="">29 апреля – 04 мая 2024</option>
+									<option value="23 – 28 июля 2024" data-asset="">23 – 28 июля 2024</option>
 								</select>
 								<select data-class-modif="date-select">
-									<option value="" data-label="Выбрать дату">Август 2024</option>
-									<option value="02 – 07 августа 2024" data-asset="Мест нет" data-class="no-place">02 – 07 августа 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
-									<option value="10 – 15 августа 2024" data-asset="Одно место">10 – 15 августа 2024</option>
-									<option value="18 – 23 августа 2024" data-asset="Есть места">18 – 23 августа 2024</option>
+									<option value="" data-label="Выбрать дату">августа 2024</option>
+									<option value="01 – 06 августа 2024" data-asset="Мест нет" data-class="no-place">01 – 06 августа 2024</option>
+									<option value="09 – 14 августа 2024" data-asset="">09 – 14 августа 2024</option>
+									<option value="17 – 22 августа 2024" data-asset="">17 – 22 августа 2024</option>
+									<option value="25 – 30 августа 2024" data-asset="">25 – 30 августа 2024</option>
 								</select>
 								<select data-class-modif="date-select">
-									<option value="" data-label="Выбрать дату">Сентябрь 2024</option>
-									<option value="1" data-asset="Мест нет" data-class="no-place">02 – 07 сентября 2024</option> <!-- добавить к option data-class="no-place" если нет мест на дату -->
-									<option value="2" data-asset="Одно место">10 – 15 сентября 2024</option>
-									<option value="3" data-asset="Есть места">18 – 23 сентября 2024</option>
+									<option value="" data-label="Выбрать дату">сентября 2024</option>
+									<option value="02 – 07 сентября  2024" data-asset="">02 – 07 сентября 2024</option>
+									<option value="10 – 15 сентября  2024" data-asset="">10 – 15 сентября 2024</option>
+									<option value="18 – 23 сентября  2024" data-asset="">18 – 23 сентября 2024</option>
 								</select>
 							</div>
-							<div class="info-block__features">
+							<div class="info-block__features" style="display: none;">
 								<div class="info-block__row-in">
 									<div class="info-block__icon">
 										<svg class="info-block__icon-svg">
@@ -134,13 +136,21 @@
 									<div class="travel-dates__row">
 										<label class="travel-dates__label">
 											<select name="form[]">
-												<option value="29 – 04 июля 2024" selected>29 – 04 июля 2024</option>
-												<option value="18 – 23 июля 2024">18 – 23 июля 2024</option>
-												<option value="10 – 15 июля 2024">10 – 15 июля 2024</option>
-												<option value="02 – 07 июля 2024">02 – 07 июля 2024</option>
+												<option value="">Выбрать дату</option>
+												<option value="29 – 04 июля 2024" data-asset="Есть места">29 – 04 июля 2024</option>
+												<option value="07 – 12 июля 2024" data-asset="Есть места">07 – 12 июля 2024</option>
+												<option value="15 – 20 июля 2024" data-asset="">15 – 20 июля 2024</option>
+												<option value="23 – 28 июля 2024" data-asset="">23 – 28 июля 2024</option>
+												<option value="01 – 06 августа 2024" data-asset="Мест нет" data-class="no-place">01 – 06 августа 2024</option>
+												<option value="09 – 14 августа 2024" data-asset="">09 – 14 августа 2024</option>
+												<option value="17 – 22 августа 2024" data-asset="">17 – 22 августа 2024</option>
+												<option value="25 – 30 августа 2024" data-asset="">25 – 30 августа 2024</option>
+												<option value="02 – 07 сентября  2024" data-asset="">02 – 07 сентября 2024</option>
+												<option value="10 – 15 сентября  2024" data-asset="">10 – 15 сентября 2024</option>
+												<option value="18 – 23 сентября  2024" data-asset="">18 – 23 сентября 2024</option>
 											</select>
 										</label>
-										<div class="travel-dates__num-seats">Осталось одно место</div>
+										<div class="travel-dates__num-seats"></div>
 									</div>
 								</div>
 							</div>

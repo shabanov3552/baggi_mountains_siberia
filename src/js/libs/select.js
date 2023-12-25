@@ -483,7 +483,8 @@ class SelectConstructor {
 	selectCallback(selectItem, originalSelect) {
 		document.dispatchEvent(new CustomEvent("selectCallback", {
 			detail: {
-				select: originalSelect
+				select: originalSelect,
+				item: selectItem
 			}
 		}));
 	}
@@ -494,5 +495,3 @@ class SelectConstructor {
 }
 // Запускаем и добавляем в объект модулей
 flsModules.select = new SelectConstructor({});
-
-
