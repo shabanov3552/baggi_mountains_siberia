@@ -66,6 +66,7 @@ const config = {
 		watchFiles: [
 			`${paths.src}/**/*.html`,
 			`${paths.src}/**/*.pug`,
+			`${paths.src}/**/*.json`,
 			`${paths.src}/**/*.htm`,
 			`${paths.src}/img/**/*.*`
 		],
@@ -120,6 +121,31 @@ const config = {
 						}
 					}
 				]
+			}, {
+				test: /\.(jsx)$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'string-replace-loader',
+						options: {
+							search: '@img',
+							replace: '../../img',
+							flags: 'g'
+						}
+					}, {
+						loader: "babel-loader",
+						options: {
+							presets: ["@babel/preset-react"]
+						}
+					}
+				],
+			}, {
+				test: /\.(png|jpe?g|gif|svg)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
 			}
 		],
 	},
@@ -145,7 +171,7 @@ const config = {
 					noErrorOnMissing: true
 				}
 			],
-		}),
+		})
 	],
 	resolve: {
 		alias: {

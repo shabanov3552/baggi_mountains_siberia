@@ -1,5 +1,4 @@
 import cleanCss from 'gulp-clean-css';
-import del from "del";
 import webpcss from 'gulp-webpcss';
 import autoprefixer from 'gulp-autoprefixer';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
@@ -21,7 +20,7 @@ export const css = () => {
 			app.plugins.if(
 				app.isBuild,
 				autoprefixer({
-					grid: true,
+					grid: false,
 					overrideBrowserslist: ["last 3 versions"],
 					cascade: true
 				})
@@ -41,11 +40,30 @@ export const css = () => {
 				)
 			)
 		)
+		.pipe(
+			app.plugins.if(
+				app.isBuild,
+				cleanCss({
+					format: 'beautify',
+					level: {
+						1: {
+							tidySelectors: false
+						}
+					}
+				})
+			)
+		)
 		.pipe(app.gulp.dest(app.path.build.css))
 		.pipe(
 			app.plugins.if(
 				app.isBuild,
-				cleanCss()
+				cleanCss({
+					level: {
+						1: {
+							tidySelectors: false
+						}
+					}
+				})
 			)
 		)
 		.pipe(app.plugins.rename({ suffix: ".min" }))

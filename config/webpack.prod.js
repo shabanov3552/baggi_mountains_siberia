@@ -101,7 +101,24 @@ const config = {
 						}
 					}
 				]
-			}
+			}, {
+				test: /\.(png|jpe?g|gif|svg)$/i,
+				loader: 'file-loader',
+				options: {
+					name: '[path][name].[ext]',
+				}
+			}, {
+				test: /\.(jsx)$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: "babel-loader",
+						options: {
+							presets: ["@babel/preset-react"],
+						}
+					}
+				],
+			},
 		],
 	},
 	plugins: [
@@ -118,6 +135,9 @@ const config = {
 			patterns: [
 				{
 					from: `${paths.src}/files`, to: `../files`,
+					noErrorOnMissing: true
+				}, {
+					from: `${paths.src}/php`, to: `../`,
 					noErrorOnMissing: true
 				}, {
 					from: `${paths.src}/favicon.ico`, to: `../`,

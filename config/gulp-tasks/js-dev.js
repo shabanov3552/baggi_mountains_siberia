@@ -26,7 +26,7 @@ webPackConfigBeautify.optimization = {
 			},
 			mangle: false,
 			module: false,
-			toplevel: false,
+			toplevel: true,
 			keep_classnames: true,
 			keep_fnames: true,
 			format: {

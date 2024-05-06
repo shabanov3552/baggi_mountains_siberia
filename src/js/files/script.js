@@ -4,7 +4,8 @@ import { isMobile } from "./functions.js";
 import { flsModules } from "./modules.js";
 
 import { Fancybox } from "@fancyapps/ui";
-import "@fancyapps/ui/dist/fancybox.css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 
 
 //#region Глобальный клик
