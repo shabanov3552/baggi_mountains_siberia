@@ -16,6 +16,8 @@
 
 	&__container {
 		height: 100%;
+		padding-left: 40px;
+		max-width: 100%;
 	}
 
 	// .fullscreen-block__row
@@ -52,6 +54,11 @@
 		}
 
 		@include adaptiveValue("padding-top", 40, 25, 680, 600, 1);
+
+		@media (max-width:em(1599.98)) and (min-width:em(999.98)) {
+			padding-top: 180px;
+			align-self: flex-start;
+		}
 	}
 
 	// .fullscreen-block__title-svg
@@ -71,7 +78,7 @@
 	&__slider {
 		opacity: 0;
 		transform: translate(160px, 0px);
-		@include adaptiveValue("margin-left", 700, 220, 1920, 1000, 1);
+		@include adaptiveValue("margin-left", 820, 220, 1920, 1000, 1);
 
 		@media (max-width: $tablet) {
 			@include adaptiveValue("margin-left", 220, 20, 1000, 480, 1);

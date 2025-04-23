@@ -65,45 +65,45 @@ body {
 		}
 
 		@media (min-width: $mobile) {
-			.fullscreen-block__main-bg-ground {
-				transform: translate(-14%, 0px);
-				opacity: 0;
-				visibility: hidden;
-				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
-			}
+			// .fullscreen-block__main-bg-ground {
+			// 	transform: translate(-14%, 0px);
+			// 	opacity: 0;
+			// 	visibility: hidden;
+			// 	transition: transform 1.5s ease-out 0s, opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
+			// }
 
-			.fullscreen-block__main-bg-mountains {
-				transform: translate(-13.8%, 0px);
-				opacity: 0;
-				visibility: hidden;
-				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
-			}
+			// .fullscreen-block__main-bg-mountains {
+			// 	transform: translate(-13.8%, 0px);
+			// 	opacity: 0;
+			// 	visibility: hidden;
+			// 	transition: transform 1.5s ease-out 0s, opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
+			// }
 
-			.fullscreen-block__main-bg-guggy {
-				transform: translate(0%, 0px);
-				opacity: 0;
-				visibility: hidden;
-				transition: transform 1.5s ease-out 0s, opacity 0.5s ease 1.7s, visibility 0.5s ease 1.7s;
-			}
+			// .fullscreen-block__main-bg-guggy {
+			// 	transform: translate(0%, 0px);
+			// 	opacity: 0;
+			// 	visibility: hidden;
+			// 	transition: transform 1.5s ease-out 0s, opacity 0.5s ease 0.3s, visibility 0.5s ease 0.3s;
+			// }
 
 			.header.full-animation {
 				.header__container {
 					transform: translate(0px, 0px);
 					opacity: 1;
-					transition: opacity 0.3s ease-out 1.7s, transform 0.3s ease-out 1.7s;
+					transition: opacity 0.3s ease-out 0.3s, transform 0.3s ease-out 0.3s;
 				}
 			}
 
 			.fullscreen-block__title {
 				transform: translate(0px, 0px);
 				opacity: 1;
-				transition: all 0.3s ease-out 1.7s;
+				transition: all 0.3s ease-out 0.3s;
 			}
 
 			.fullscreen-block__slider {
 				transform: translate(0px, 0px);
 				opacity: 1;
-				transition: all 0.3s ease-out 1.7s;
+				transition: all 0.3s ease-out 0.3s;
 			}
 
 			.fullscreen-block {
@@ -111,12 +111,12 @@ body {
 				.swiper-button-prev,
 				.swiper-button-next {
 					opacity: 1;
-					transition: all 0.3s ease 1.7s;
+					transition: all 0.3s ease 0.3s;
 				}
 
 				.ytb-btn {
 					opacity: 1;
-					transition: all 0.3s ease 1.7s;
+					transition: all 0.3s ease 0.3s;
 				}
 			}
 		}
